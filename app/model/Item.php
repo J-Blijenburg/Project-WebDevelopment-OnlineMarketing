@@ -1,12 +1,14 @@
 <?php
 
 class Item{
-    public int $id;
-    public string $Name;
-    public string $Description;
-    public string $Price;
-    public string $Posted_At;
-    public string $Status;
+    public int $itemId;
+    public string $name;
+    public string $description;
+    public string $price;
+    public string $posted_At;
+    public string $status;
+    public string $image;
+    public User $user;
 }
 
 ?>

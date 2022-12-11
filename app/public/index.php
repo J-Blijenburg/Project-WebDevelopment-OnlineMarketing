@@ -5,6 +5,7 @@ $url = $_SERVER["REQUEST_URI"];
 require("../controller/MainPageController.php");
 
 switch ($url) {
+    case "/":
     case "/mainpage":
         $controller = new MainPageController();
         $controller -> mainPage();
