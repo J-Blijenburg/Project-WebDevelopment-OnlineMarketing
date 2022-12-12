@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link href="StyleSheet.css" rel="stylesheet">
+ 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online-Marketing</title>
@@ -20,7 +20,7 @@
                     <strong>Online-Marketing</strong>
                 </a>
                 <form method="POST">        
-                    <button name="loginButton" onclick="ChangeUrl('Page1', 'LoginPage.php');" type="submit" class="btn btn-light">Login</button>
+                    <button name="loginButton" type="submit" class="btn btn-light">Login</button>
                 </form>
             </div>
         </div>

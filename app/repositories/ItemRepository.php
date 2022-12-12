@@ -1,5 +1,5 @@
 <?php
-require("../model/Item.php");
+require_once("../model/Item.php");
 require_once("../repositories/Repository.php");
 class ItemRepository extends Repository{
     protected $connection ;

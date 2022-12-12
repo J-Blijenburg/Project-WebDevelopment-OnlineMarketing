@@ -5,7 +5,7 @@ class Repository
     protected $connection;
     public function __construct()
     {
-        require_once("../Config.php");
+        require("../Config.php");
             
         //connect met de database
         try {

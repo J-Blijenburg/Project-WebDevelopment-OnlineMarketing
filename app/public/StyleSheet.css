@@ -48,3 +48,48 @@
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
 }
+
+.text-center{
+    margin-top: 10%;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.btnGuest{
+    margin-top: 10%;
+}
+
+.input-group{
+    margin-right: 500%;
+}
+
+.form-control{
+    width: 20px;
+}
+
+.messageControlInput{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userNameInput{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 50px;
+    flex-basis: 80%;
+    width: 25%;
+}
+
+.messageInput{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-basis: 50%;
+    width: 25%;
+}
+
+.btnMessage{
+    margin-top: 1%;
+}
+
+.hidden { visibility: hidden; }

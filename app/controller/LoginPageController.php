@@ -1,13 +1,14 @@
 <?php
+require_once("../repositories/UserRepository.php");
 
-require_once("../repositories/ItemRepository.php");
+
 class LoginPageController{
-    public function loginPage(){
-        $repository = new ItemRepository();
-        $items = $repository->getAll();
-        
-        
+   
 
+    public function loginPage(){
+        $repository = new UserRepository();
+        $users = $repository->getAll();
+        
         require("../view/LoginPage.php");
     }
 }
