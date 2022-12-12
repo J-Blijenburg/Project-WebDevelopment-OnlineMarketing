@@ -19,8 +19,8 @@
 
                     <strong>Online-Marketing</strong>
                 </a>
-                <form method="POST">        
-                    <button name="loginButton" type="submit" class="btn btn-light">Login</button>
+                <form action="/login">        
+                    <button type="submit" class="btn btn-light">Login</button>
                 </form>
             </div>
         </div>
