@@ -1,7 +1,7 @@
 <?php
 require_once("../repositories/ItemRepository.php");
 
-class MainController
+class MainMemberController
 {
    
     public function main()
@@ -10,7 +10,7 @@ class MainController
         $items = $repository->getAll();
 
 
-        require("../view/Main.php");
+        require_once("../view/MainMember.php");
         
     }
 }

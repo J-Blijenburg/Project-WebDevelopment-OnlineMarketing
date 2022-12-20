@@ -1,0 +1,14 @@
+h1{
+    color: Black;
+}
+.text-center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5%;
+}
+
+.btnGuest{
+    margin-top: 2.5%;
+    width: 25%;
+}
