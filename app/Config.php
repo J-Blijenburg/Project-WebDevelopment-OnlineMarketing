@@ -1,4 +1,4 @@
-<!-- Acces information of the MYSQL database -->
+
 <?php
 $db_host = "mysql";
 $db_username = "root";

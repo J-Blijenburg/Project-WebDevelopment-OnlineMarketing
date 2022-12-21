@@ -25,7 +25,7 @@
                 <form method="post">
                     
                     <button  class="btn btn-light" name="test">Login</button>
-                    <input type='submit' name='submit' value='Register' class='register' />
+
                 </form>
 
                 

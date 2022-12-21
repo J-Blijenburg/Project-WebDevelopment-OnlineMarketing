@@ -20,8 +20,3 @@ class MainGuestController
 ?>
 
 
-<?php
-if(isset($_POST['reg_button'])){
-header("Location: http://www.example.com/page.php");
-exit;
-}
