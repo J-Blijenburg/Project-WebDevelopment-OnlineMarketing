@@ -1,10 +1,10 @@
 <?php
 require_once("../repositories/UserRepository.php");
 
-class MainMemberController
+class NewMemberController
 {
    
-    public function main()
+    public function newMember()
     {
         $repository = new UserRepository();
         $User = $repository->getAll();

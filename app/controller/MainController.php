@@ -1,7 +1,7 @@
 <?php
 require_once("../repositories/ItemRepository.php");
 
-class MainGuestController
+class MainController
 {
    
     public function main()
@@ -9,14 +9,18 @@ class MainGuestController
         $repository = new ItemRepository();
         $items = $repository->getAll();
 
+        if (isset($_POST["LoginButton"]) ) {
+            header("Location: /login");
+        }
 
-        require("../view/MainGuest.php");
+
+        require("../view/Main.php");
         
         
         
     }
 }
 
-?>
+
 
 

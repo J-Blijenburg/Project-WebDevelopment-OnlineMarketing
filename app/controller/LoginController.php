@@ -20,12 +20,20 @@ class LoginController{
        
                 
                 if ($row->FirstName == $username && $row->Password == $password) {
-                    header("Location: /MainMember");
+                    header("Location: /main");
                 }
             }
         }
 
-        require_once("../view/Login.php");
+        else if(isset($_POST["ContinueAsGuestBtn"])){
+            header("Location: /main");
+        }
+
+        else if(isset($_POST["NewMemberBtn"])){
+            header("Location: /main");
+        }
+
+        require("../view/Login.php");
     }
 
 

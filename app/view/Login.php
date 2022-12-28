@@ -25,11 +25,11 @@
             </form>
 
             
-            <form >
-                <button action="" type="submit" class="w-100 btn btn-lg btn-primary mt-3">Continue as Guest</button>
+            <form method="POST">
+                <button name="ContinueAsGuestBtn" class="w-100 btn btn-lg btn-primary mt-3">Continue as Guest</button>
             </form>
-            <form >
-                <button action="" type="submit" class="w-100 btn btn-lg btn-primary mt-3">New Member</button>
+            <form method="POST">
+                <button  type="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">New Member</button>
             </form>
 
     </div>

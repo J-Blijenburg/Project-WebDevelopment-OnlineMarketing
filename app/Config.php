@@ -1,4 +1,3 @@
-
 <?php
 $db_host = "mysql";
 $db_username = "root";
