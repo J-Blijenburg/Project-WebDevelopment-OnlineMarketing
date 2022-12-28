@@ -11,11 +11,22 @@ class MainController
         $repository = new ItemRepository();
         $items = $repository->getAll();
 
-        $user = unserialize($_SESSION['user']);
-
-
-        if (isset($_POST["LoginButton"]) ) {
+        //button to login
+        if (isset($_POST["LoginBtn"]) ) {
             header("Location: /login");
+        }
+        //button to signup
+        else if(isset($_POST["SignUpBtn"])){
+            header("Location: /newMember");
+        }
+        //button to logout
+        else if(isset($_POST["LogOutBtn"])){
+            $_SESSION['loggedin'] = false;
+            header("Location: /main");
+        }
+        //button to see the profile
+        else if(isset($_POST["profileBtn"])){
+            header("Location: /profile");
         }
         
         require("../view/Main.php");

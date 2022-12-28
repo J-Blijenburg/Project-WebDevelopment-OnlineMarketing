@@ -19,6 +19,11 @@ switch ($url) {
         $controller = new NewMemberController();
         $controller->newMember();
         break;
+    case "/profile":
+        require_once("../controller/ProfileController.php");
+        $controller = new ProfileController();
+        $controller->profile();
+        break;
     default;
         http_response_code(404);
 }
