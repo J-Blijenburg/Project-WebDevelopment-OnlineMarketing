@@ -1,6 +1,6 @@
 <?php
 require_once("../repositories/UserRepository.php");
-
+session_start();
 
 class LoginController{
    
@@ -12,14 +12,23 @@ class LoginController{
         
         
       
-        if (isset($_POST["username"]) && isset($_POST["password"])) {
-            $username = htmlspecialchars($_POST["username"]);
+        if (isset($_POST["email"]) && isset($_POST["password"])) {
+            $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
 
-            foreach ($users as $row) {
-       
-                
-                if ($row->FirstName == $username && $row->Password == $password) {
+            foreach ($users as $row) {               
+                if ($row->Email == $email && $row->Password == $password) {
+                  
+                    $user = new User();
+                    $user->user_Id = $row->User_Id;
+                    $user->firstName = $row->FirstName;
+                    $user->lastName = $row->LastName;
+                    $user->email = $row->Email;
+                    $user->password = $row->Password;
+                    
+
+                    $_SESSION["user"] = serialize($user);
+
                     header("Location: /main");
                 }
             }
@@ -30,7 +39,7 @@ class LoginController{
         }
 
         else if(isset($_POST["NewMemberBtn"])){
-            header("Location: /main");
+            header("Location: /newMember");
         }
 
         require("../view/Login.php");

@@ -18,10 +18,13 @@
     <div class="btnGuest ">
 
         <form method='POST'>
-            <input name="username" class="form-control " id="floatingInput" placeholder="Username">
-            <input name="password" class="form-control mt-3" id="ds" placeholder="Password">
+            <input name="firstname" class="form-control" id="floatingInput" placeholder="Firstname">
+            <input name="lastname" class="form-control mt-3" id="floatingInput" placeholder="Lastname">
+            <input name="email" class="form-control mt-3" id="ds" placeholder="Email">
+            <input name="password" class="form-control mt-3" id="ds" placeholder="Password">       
             <input type="hidden" name="action" value="submit" />
-            <button type="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">Create New Member</button>
+            <button name="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">Create New Member</button>
+            <button name="BackBtn" class="w-100 btn btn-lg btn-primary mt-3">Back</button>
         </form>
     </div>
 

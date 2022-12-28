@@ -17,7 +17,7 @@
 
     <div class="btnGuest ">
         <form method='POST'>
-            <input name="username" class="form-control " id="floatingInput" placeholder="Username">
+            <input name="email" class="form-control " id="floatingInput" placeholder="Email">
             <form method='POST'>
                 <input name="password" class="form-control mt-3" id="ds" placeholder="Password">
                 <input type="hidden" name="action" value="submit" />
@@ -29,7 +29,7 @@
                 <button name="ContinueAsGuestBtn" class="w-100 btn btn-lg btn-primary mt-3">Continue as Guest</button>
             </form>
             <form method="POST">
-                <button  type="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">New Member</button>
+                <button  name="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">New Member</button>
             </form>
 
     </div>
