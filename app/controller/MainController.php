@@ -17,10 +17,7 @@ class MainController
         if (isset($_POST["LoginButton"]) ) {
             header("Location: /login");
         }
-        else if (isset($user)){
-            echo "dsad";
-        }
-       
+        
         require("../view/Main.php");
 
         

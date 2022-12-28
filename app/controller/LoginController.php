@@ -28,13 +28,14 @@ class LoginController{
                     
 
                     $_SESSION["user"] = serialize($user);
-
+                    $_SESSION['loggedin'] = true;
                     header("Location: /main");
                 }
             }
         }
 
         else if(isset($_POST["ContinueAsGuestBtn"])){
+            $_SESSION['loggedin'] = false;
             header("Location: /main");
         }
 
