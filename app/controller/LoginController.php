@@ -9,8 +9,6 @@ class LoginController{
         $repository = new UserRepository();
         $users = $repository->getAll();
         
-        
-        
       
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $email = htmlspecialchars($_POST["email"]);
@@ -32,6 +30,8 @@ class LoginController{
                     header("Location: /main");
                 }
             }
+
+            
         }
 
         else if(isset($_POST["ContinueAsGuestBtn"])){

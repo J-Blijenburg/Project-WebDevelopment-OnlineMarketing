@@ -28,6 +28,11 @@ class MainController
         else if(isset($_POST["profileBtn"])){
             header("Location: /profile");
         }
+        else if(isset($_POST["btnMoreInfo"])){
+           
+
+            header("Location: /iteminformation");
+        }
         
         require("../view/Main.php");
 

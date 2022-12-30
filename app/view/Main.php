@@ -80,23 +80,26 @@ $user = unserialize($_SESSION['user']);
                             <div class="card shadow-sm">
 
                                 <?php
-                                $dataUri = "data:image/jpeg;base64," . base64_encode($row->Images);
+                                $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
                                 ?>
                                 <img src="<?php echo $dataUri; ?>">
                                 <div class="card-body">
                                     <h5>
                                         <?php
+
                                         echo $row->Name;
                                         ?>
 
                                     </h5>
                                     <h5>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-outline-secondary">More Info</button>
-                                            </div>
+                                        <form method="POST">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button name="btnMoreInfo" class="btn btn-sm btn-outline-secondary">More Info</button>
+                                                </div>
 
-                                        </div>
+                                            </div>
+                                        </form>
                                 </div>
                             </div>
                         </div>

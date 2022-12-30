@@ -67,51 +67,45 @@ $user = unserialize($_SESSION['user']);
             <section class="py-5 text-center container">
                 <div class="row py-lg-5">
                     <div class="col-lg-6 col-md-8 mx-auto">
-                        <h1 class="fw-light">Jens Blijenburg</h1>
+                        <h1 class="fw-light">Create a new item</h1>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <button name="NewItemBtn" class="btn btn-success">New Item</button>
-                </div>
+
             </section>
         </form>
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <?php
-                    foreach ($items as $row) {
-                    ?>
-                        <div class="col">
-                            <div class="card shadow-sm">
+        <div class="d-flex justify-content-center ">
+        <form method="POST" enctype="multipart/form-data">
 
-                                <?php
-                                $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
-                                ?>
-                                <img src="<?php echo $dataUri; ?>">
-                                <div class="card-body">
-                                    <h5>
-                                        <?php
-
-                                        echo $row->Name;
-                                        ?>
-
-                                    </h5>
-                                    <h5>
-                                        <form method="POST">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="btn-group">
-                                                    <button name=btnMoreInfo class="btn btn-sm btn-outline-secondary">More Info</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
-                </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Name of the product</span>
+                <input name="ItemName" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
             </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Description</span>
+                <textarea name="ItemDescription" class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Price</span>
+                <span class="input-group-text">€</span>
+                <input name="ItemPrice" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+            </div>
+
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="ItemUpload">Upload</label>
+                <input name="ItemUpload" type="file" class="form-control">
+            </div>
+
+        </form>
+        </div>
+        <div class="d-flex justify-content-center flex-grow-3">
+            <form method="POST" enctype="multipart/form-data">
+                <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+                    <button name="ItemCancel" class="btn btn-outline-dark">Cancel</button>
+                    <button name="ItemCreate" class="btn btn-outline-dark">Create Item</button>
+                </div>
+            </form>
         </div>
     </main>
     <footer class="text-muted py-5">

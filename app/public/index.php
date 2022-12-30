@@ -24,8 +24,16 @@ switch ($url) {
         $controller = new ProfileController();
         $controller->profile();
         break;
+    case "/newitem":
+        require_once("../controller/NewItemController.php");
+        $controller = new NewItemController();
+        $controller->newItem();
+        break;
+    case "/iteminformation":
+        require_once("../controller/ItemInformationController.php");
+        $controller = new ItemInformationController();
+        $controller->itemInformation();
+        break;
     default;
         http_response_code(404);
 }
-
-

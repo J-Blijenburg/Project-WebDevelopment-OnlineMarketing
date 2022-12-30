@@ -63,56 +63,14 @@ $user = unserialize($_SESSION['user']);
 
 
     <main>
-        <form method="POST">
-            <section class="py-5 text-center container">
-                <div class="row py-lg-5">
-                    <div class="col-lg-6 col-md-8 mx-auto">
-                        <h1 class="fw-light">Jens Blijenburg</h1>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button name="NewItemBtn" class="btn btn-success">New Item</button>
-                </div>
-            </section>
-        </form>
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <?php
-                    foreach ($items as $row) {
-                    ?>
-                        <div class="col">
-                            <div class="card shadow-sm">
-
-                                <?php
-                                $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
-                                ?>
-                                <img src="<?php echo $dataUri; ?>">
-                                <div class="card-body">
-                                    <h5>
-                                        <?php
-
-                                        echo $row->Name;
-                                        ?>
-
-                                    </h5>
-                                    <h5>
-                                        <form method="POST">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="btn-group">
-                                                    <button name=btnMoreInfo class="btn btn-sm btn-outline-secondary">More Info</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
+    <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">item informatie</h1>
+                    <p class="lead text-muted">Hier kan wat informatie komen te staan</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
     <footer class="text-muted py-5">
         <div class="container">
