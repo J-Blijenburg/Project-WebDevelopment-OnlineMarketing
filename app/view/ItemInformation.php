@@ -63,7 +63,7 @@ $user = unserialize($_SESSION['user']);
 <body>
     <div class="content">
         <main class="container mt-5">
-            <div class="bg-light p-5 rounded">
+            <div class="bg-light p-5  rounded">
                 <?php
                 foreach ($item as $row) {
                     $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
@@ -76,6 +76,24 @@ $user = unserialize($_SESSION['user']);
                 <?php
                 }
                 ?>
+                <form method="POST">
+                    <div class="input-group mb-0">
+                        <span class="input-group-text">€</span>
+                        <input name="txtBidPrice" type="text" class="form-control">
+                        <?php
+                        if ($_SESSION['loggedin'] == true) {
+                        ?>
+                            <button name="btnBid" class="btn btn-outline-secondary btn-lg">Place bid</button>
+                        <?php
+                        } else {
+                        ?>
+                            <button name="btnBid" class="btn btn-outline-secondary btn-lg"  disabled>Place bid</button>
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+                </form>
             </div>
             <div class="bids">
                 <table class="table table-success table-striped">

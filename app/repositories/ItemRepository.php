@@ -30,7 +30,7 @@ class ItemRepository extends Repository{
     }
 
     //get a single item which is selected by the item id
-    public function getItem($itemId){
+    public function getItemById($itemId){
         $stmt = $this->connection->prepare("SELECT * FROM Items WHERE Item_Id = :itemId");
         $stmt->bindParam(':itemId', $itemId);
 
