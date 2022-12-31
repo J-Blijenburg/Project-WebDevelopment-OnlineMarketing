@@ -24,7 +24,7 @@
             <input name="email" class="form-control " id="floatingInput" placeholder="Email">
             <input name="password" class="form-control mt-3" id="ds" placeholder="Password">
             <input type="hidden" name="action" value="submit" />
-            <button name="BtnLoginMember" class="w-100 btn btn-lg btn-primary mt-3">Login</button>
+            <button name="BtnLoginUser" class="w-100 btn btn-lg btn-primary mt-3">Login</button>
         </form>
 
 
@@ -32,7 +32,7 @@
             <button name="ContinueAsGuestBtn" class="w-100 btn btn-lg btn-primary mt-3">Continue as Guest</button>
         </form>
         <form method="POST">
-            <button name="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">New Member</button>
+            <button name="NewUserBtn" class="w-100 btn btn-lg btn-primary mt-3">New User</button>
         </form>
 
     </div>

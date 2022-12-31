@@ -23,7 +23,7 @@
             <input name="email" class="form-control mt-3" id="ds" placeholder="Email">
             <input name="password" class="form-control mt-3" id="ds" placeholder="Password">       
             <input type="hidden" name="action" value="submit" />
-            <button name="NewMemberBtn" class="w-100 btn btn-lg btn-primary mt-3">Create New Member</button>
+            <button name="NewUserBtn" class="w-100 btn btn-lg btn-primary mt-3">Create New User</button>
             <button name="BackBtn" class="w-100 btn btn-lg btn-primary mt-3">Back</button>
         </form>
     </div>

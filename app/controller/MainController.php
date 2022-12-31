@@ -17,7 +17,7 @@ class MainController
         }
         //button to signup
         else if(isset($_POST["SignUpBtn"])){
-            header("Location: /newMember");
+            header("Location: /newuser");
         }
         //button to logout
         else if(isset($_POST["LogOutBtn"])){

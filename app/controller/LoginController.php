@@ -39,8 +39,8 @@ class LoginController{
             header("Location: /main");
         }
 
-        else if(isset($_POST["NewMemberBtn"])){
-            header("Location: /newMember");
+        else if(isset($_POST["NewUserBtn"])){
+            header("Location: /newuser");
         }
 
         require("../view/Login.php");

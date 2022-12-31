@@ -64,9 +64,44 @@ $user = unserialize($_SESSION['user']);
     <div class="content">
         <main class="container mt-5">
             <div class="bg-light p-5 rounded">
-                <h1>Navbar example</h1>
-                <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
-                <a class="btn btn-lg btn-primary" href="/docs/5.3/components/navbar/" role="button">View navbar docs »</a>
+                <?php
+                foreach ($item as $row) {
+                    $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
+
+                ?>
+                    <img class="rounded w-50 mx-auto d-block" src="<?php echo $dataUri; ?>" alt="Image of item">
+                    <h1 class="mt-3"><?php echo $row->Name ?></h1>
+                    <h4>Minimum Price: €<?php echo $row->Price ?>,-</h4>
+                    <p class="lead"><?php echo $row->Description ?></p>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="bids">
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Date&Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($itemBiddings as $row) {
+                        ?>
+                            <tr>
+                                <th scope="row"></th>
+                                <td><?php echo $row->FirstName ?></td>
+                                <td><?php echo $row->Price ?></td>
+                                <td><?php echo $row->Date ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </main>
     </div>

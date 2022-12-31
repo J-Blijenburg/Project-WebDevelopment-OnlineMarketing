@@ -14,7 +14,7 @@ class ProfileController{
         $user = unserialize($_SESSION['user']);
         
 
-        $items = $repository->getMemberItems($user->user_Id);
+        $items = $repository->getUserItems($user->user_Id);
 
         //creats an new item
         if(isset($_POST["NewItemBtn"])){

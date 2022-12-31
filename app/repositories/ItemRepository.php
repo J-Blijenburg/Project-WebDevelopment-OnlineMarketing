@@ -17,10 +17,10 @@ class ItemRepository extends Repository{
         return $items;
     }
 
-    //get every item from the selected member/current member
-    public function getMemberItems($memberId){
-        $stmt = $this->connection->prepare("SELECT * FROM Items WHERE User_Id = :memberId");
-        $stmt->bindParam(':memberId', $memberId);
+    //get every item from the selected user/current user
+    public function getUserItems($userId){
+        $stmt = $this->connection->prepare("SELECT * FROM Items WHERE User_Id = :userId");
+        $stmt->bindParam(':userId', $userId);
 
         $stmt->execute();
         
@@ -41,6 +41,8 @@ class ItemRepository extends Repository{
         return $item;
     }
 
+    
+
     //create a new item
     public function setNewItem($itemName, $itemDescription, $itemPrice, $itemUpload)
     {       
@@ -53,6 +55,8 @@ class ItemRepository extends Repository{
 
         $query->execute();
     }
+
+    
 
     
 }

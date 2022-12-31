@@ -1,10 +1,10 @@
 <?php
 require_once("../repositories/UserRepository.php");
 
-class NewMemberController
+class NewUserController
 {
    
-    public function newMember()
+    public function newUser()
     {
         $repository = new UserRepository();
         $User = $repository->getAll();
@@ -20,12 +20,12 @@ class NewMemberController
             $password = htmlspecialchars($_POST["password"]);
             
 
-            $repository->setNewMember($firstName, $lastName, $email, $password);
+            $repository->setNewUser($firstName, $lastName, $email, $password);
 
             header("Location: /login");
         }
 
-        require("../view/NewMember.php");
+        require("../view/NewUser.php");
         
     }
 }

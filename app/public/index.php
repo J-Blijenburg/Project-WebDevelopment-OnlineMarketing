@@ -14,10 +14,10 @@ switch ($url) {
         $controller = new LoginController();
         $controller->login();
         break;
-    case "/newMember":
-        require_once("../controller/NewMemberController.php");
-        $controller = new NewMemberController();
-        $controller->newMember();
+    case "/newuser":
+        require_once("../controller/NewUserController.php");
+        $controller = new NewUserController();
+        $controller->newUser();
         break;
     case "/profile":
         require_once("../controller/ProfileController.php");
