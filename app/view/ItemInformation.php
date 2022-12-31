@@ -12,6 +12,7 @@ $user = unserialize($_SESSION['user']);
     <meta name="theme-color" content="#712cf9">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="StyleSheets/Style.css" rel="stylesheet" />
 </head>
 <header class="p-3 text-bg-dark">
 
@@ -60,32 +61,29 @@ $user = unserialize($_SESSION['user']);
 </header>
 
 <body>
-
-
-    <main>
-    <section class="py-5 text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">item informatie</h1>
-                    <p class="lead text-muted">Hier kan wat informatie komen te staan</p>
-                </div>
+    <div class="content">
+        <main class="container mt-5">
+            <div class="bg-light p-5 rounded">
+                <h1>Navbar example</h1>
+                <p class="lead">This example is a quick exercise to illustrate how the top-aligned navbar works. As you scroll, this navbar remains in its original position and moves with the rest of the page.</p>
+                <a class="btn btn-lg btn-primary" href="/docs/5.3/components/navbar/" role="button">View navbar docs »</a>
             </div>
-        </section>
-    </main>
-    <footer class="text-muted py-5">
-        <div class="container">
-            <footer class="py-3 my-4">
-                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-                </ul>
-                <p class="text-center text-muted">© 2022 Company, Inc</p>
-            </footer>
-        </div>
-    </footer>
+        </main>
+    </div>
+
+    <div class="container">
+        <footer class="py-3 my-4 ">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2022 Company, Inc</p>
+        </footer>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 

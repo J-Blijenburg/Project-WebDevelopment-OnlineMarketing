@@ -9,10 +9,10 @@ class ItemInformationController
     public function itemInformation()
     {
         $repository = new ItemRepository();
-
         $itemId = 1;
-
         $item = $repository->getItem($itemId);
+
+        
 
 
         
