@@ -9,6 +9,9 @@ class ItemInformationController
 
     public function itemInformation()
     {
+        //When opening the information page always make sure it doesnt start in 'edit mode'
+        $_SESSION['editItem'] = false;
+
         $itemRepository = new ItemRepository();
         $userRepository = new UserRepository();
         $bidRepository = new BidRepository();
@@ -40,6 +43,19 @@ class ItemInformationController
         else if (isset($_POST["txtBidPrice"])) {
             $bidPrice = htmlspecialchars($_POST["txtBidPrice"]);
             $bidRepository->setNewBid($bidPrice, $itemId, $user->user_Id);
+        } else if (isset($_POST["btnDeleteItem"])) {
+            $itemRepository->DeleteItem($itemId);
+            header("Location: /profile");
+        } else if (isset($_POST["btnEditItem"])) {
+            $_SESSION['editItem'] = true;
+        }
+        //Button to change the values of the item
+        else if (isset($_POST["btnSaveItem"])) {
+            $itemName = htmlspecialchars($_POST["itemName"]);
+            $itemPrice = htmlspecialchars($_POST["itemPrice"]);
+            $itemDescription = htmlspecialchars($_POST["itemDescription"]);
+
+            $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
         }
 
 

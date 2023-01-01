@@ -40,9 +40,6 @@ class ItemRepository extends Repository{
         $item = $stmt->fetchAll();
         return $item;
     }
-
-    
-
     //create a new item
     public function setNewItem($itemName, $itemDescription, $itemPrice, $itemUpload)
     {       
@@ -56,7 +53,34 @@ class ItemRepository extends Repository{
         $query->execute();
     }
 
-    
+     //edit item by item id
+     public function EditItemById($itemId, $itemName, $itemDescription, $itemPrice)
+     {       
+        $query = $this->connection->prepare("UPDATE Items 
+        SET Name = :name, Description = :description, Price = :price
+        WHERE `Item_Id` = :itemId");
+
+        $query->bindParam(':itemId', $itemId);
+        $query->bindParam(':name', $itemName);
+        $query->bindParam(':price', $itemPrice);
+        $query->bindParam(':description', $itemDescription);
+
+        $query->execute();
+     }
+
+    //Delete the selected item by itemid
+    public function DeleteItem($itemId)
+    {      
+        //First delete all the bids which are connected to the item
+        $query = $this->connection->prepare("DELETE FROM Bids WHERE Item_Id = :itemId");
+        $query->bindParam(':itemId', $itemId);
+        $query->execute();
+        
+        //Second delete the selected item given by its itemId
+        $query = $this->connection->prepare("DELETE FROM Items WHERE Item_Id = :itemId");
+        $query->bindParam(':itemId', $itemId);
+        $query->execute();
+    }
 
     
 }

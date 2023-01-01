@@ -1,6 +1,4 @@
-<?php
-$user = unserialize($_SESSION['user']);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +41,9 @@ $user = unserialize($_SESSION['user']);
                         ?>
                             <button class="btn btn-outline-light me-2" name="profileBtn">
                                 <?php
+                                
+                                $user = unserialize($_SESSION['user']);
+                                
                                 echo $user->firstName;
                                 ?>
                             </button>
