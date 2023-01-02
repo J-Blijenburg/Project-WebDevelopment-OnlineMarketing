@@ -21,7 +21,6 @@ function addItem() {
 
     
 
-    const iets= document.createElement('p');
 
     div3.appendChild(div);
     div2.appendChild(div3);

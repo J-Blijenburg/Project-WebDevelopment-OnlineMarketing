@@ -30,7 +30,7 @@ class MainController
         }
         else if(isset($_POST["btnMoreInfo"])){
            
-
+            $email = htmlspecialchars($_POST["bob"]);
             header("Location: /iteminformation");
         }
         

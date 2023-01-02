@@ -75,37 +75,37 @@ $user = unserialize($_SESSION['user']);
             </section>
         </form>
         <div class="d-flex justify-content-center ">
-        <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
 
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Name of the product</span>
-                <input name="ItemName" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Name of the product</span>
+                    <input name="ItemName" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
 
-            <div class="input-group mb-3">
-                <span class="input-group-text">Description</span>
-                <textarea name="ItemDescription" class="form-control" aria-label="With textarea"></textarea>
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text">Price</span>
-                <span class="input-group-text">€</span>
-                <input name="ItemPrice" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-            </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Description</span>
+                    <textarea name="ItemDescription" class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Price</span>
+                    <span class="input-group-text">€</span>
+                    <input name="ItemPrice" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                </div>
 
 
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="ItemUpload">Upload</label>
-                <input name="ItemUpload" type="file" class="form-control">
-            </div>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="ItemUpload">Upload</label>
+                    <input name="ItemUpload" type="file" class="form-control">
+                </div>
 
-        </form>
+
         </div>
         <div class="d-flex justify-content-center flex-grow-3">
-            <form method="POST" enctype="multipart/form-data">
-                <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-                    <button name="ItemCancel" class="btn btn-outline-dark">Cancel</button>
-                    <button name="ItemCreate" class="btn btn-outline-dark">Create Item</button>
-                </div>
+
+            <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+                <button name="ItemCancel" class="btn btn-outline-dark">Cancel</button>
+                <button name="ItemCreate" class="btn btn-outline-dark">Create Item</button>
+            </div>
             </form>
         </div>
     </main>
