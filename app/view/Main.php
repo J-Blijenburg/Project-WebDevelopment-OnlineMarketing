@@ -104,11 +104,8 @@
                                         <form method="POST">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-                                                    <input type="hidden" name="bob" value="<?php
-
-echo $row->Item_Id;
-?>" />
-                                                    <button onclick name="btnMoreInfo" class="btn btn-sm btn-outline-secondary">More Info</button>
+                                                 
+                                                    <button  name="btnMoreInfo" value="<?php echo $row->Item_Id; ?>" class="btn btn-sm btn-outline-secondary">More Info</button>
                                                 </div>
 
                                             </div>

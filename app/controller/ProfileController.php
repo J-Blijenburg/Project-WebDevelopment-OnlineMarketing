@@ -26,6 +26,9 @@ class ProfileController{
             header("Location: /main");
         }
         else if(isset($_POST["btnMoreInfo"])){
+           
+            $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
+
             header("Location: /iteminformation");
         }
 

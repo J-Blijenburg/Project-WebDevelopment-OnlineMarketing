@@ -30,7 +30,8 @@ class MainController
         }
         else if(isset($_POST["btnMoreInfo"])){
            
-            $email = htmlspecialchars($_POST["bob"]);
+            $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
+
             header("Location: /iteminformation");
         }
         

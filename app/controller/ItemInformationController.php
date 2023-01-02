@@ -15,7 +15,7 @@ class ItemInformationController
         $itemRepository = new ItemRepository();
         $userRepository = new UserRepository();
         $bidRepository = new BidRepository();
-        $itemId = 1;
+        $itemId = $_SESSION['selectedItem'];
         $item = $itemRepository->getItemById($itemId);
         $itemBiddings = $bidRepository->getBiddingById($itemId);
 
