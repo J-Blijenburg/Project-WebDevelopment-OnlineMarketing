@@ -26,10 +26,15 @@ class ProfileController{
             header("Location: /main");
         }
         else if(isset($_POST["btnMoreInfo"])){
-           
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
-
             header("Location: /iteminformation");
+        }
+        else if(isset($_POST["SignUpBtn"])){
+            header("Location: /newuser");
+        }
+        //button to login
+        else if (isset($_POST["LoginBtn"]) ) {
+            header("Location: /login");
         }
 
         require("../view/Profile.php");
