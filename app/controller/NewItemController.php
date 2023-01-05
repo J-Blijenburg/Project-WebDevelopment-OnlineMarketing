@@ -1,6 +1,7 @@
 <?php
 require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
+require_once("../repositories/CategoryRepository.php");
 session_start();
 
 class NewItemController
@@ -8,18 +9,22 @@ class NewItemController
     public function newItem()
     {
         $repository = new ItemRepository();
+        $categoryRepository = new CategoryRepository();
+        $allCategorys = $categoryRepository->getAllCategory();
 
         if(isset($_POST["ItemCreate"])){
+            //retreive the given input by the use of POST
             $itemName = htmlspecialchars($_POST["ItemName"]);
             $itemDescription = htmlspecialchars($_POST["ItemDescription"]);
             $itemPrice = htmlspecialchars($_POST["ItemPrice"]);
+            $selectedCategory = htmlspecialchars($_POST["inputCategory"]);
 
             //look for the file path and the get all the information of that file
             $filename = $_FILES['ItemUpload']['tmp_name'];
             $image =  file_get_contents($filename);
 
             //send all the information to the repository
-            $repository->setNewItem($itemName, $itemDescription, $itemPrice, $image);
+            $repository->setNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $image);
         }
 
         else if (isset($_POST["ItemCancel"])) {

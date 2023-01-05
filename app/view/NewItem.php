@@ -91,6 +91,19 @@ $user = unserialize($_SESSION['user']);
                     <span class="input-group-text">€</span>
                     <input name="ItemPrice" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
+                <div class="input-group  mb-3">
+                    <select class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
+                        <option selected>Choose...</option>
+                        <?php
+                        foreach ($allCategorys as $row) {
+                        ?>
+                            <option value="<?php echo $row->Category_Id ?>"><?php echo $row->Name ?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+
+                </div>
 
 
                 <div class="input-group mb-3">
@@ -100,9 +113,11 @@ $user = unserialize($_SESSION['user']);
 
 
         </div>
+
         <div class="d-flex justify-content-center flex-grow-3">
 
             <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
+
                 <button name="ItemCancel" class="btn btn-outline-dark">Cancel</button>
                 <button name="ItemCreate" class="btn btn-outline-dark">Create Item</button>
             </div>
