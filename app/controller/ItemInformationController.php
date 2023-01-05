@@ -58,6 +58,12 @@ class ItemInformationController
 
             $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
         }
+        else if(isset($_POST["btnSellItem"])){
+                $soldItemId = htmlspecialchars($_POST["btnSellItem"]);
+                $itemRepository->DeleteItem($soldItemId);
+
+                header("Location: /profile");
+        }
 
 
         require("../view/ItemInformation.php");

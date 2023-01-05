@@ -26,13 +26,13 @@
                     <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
                     <div class="d-flex justify-content-center  ms-4">
                         <form method="POST">
-                            <button name="NewItemBtn" class="btn btn-success">New Item</button>
+                            <button  name="NewItemBtn" class="btn btn-success">New Item</button>
                         </form>
                     </div>
                 </div>
                 <div class="d-flex">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                        <input  type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
                     </form>
                     <form method="POST">
                         <div class="text-end">
@@ -68,7 +68,7 @@
         <main class="container mt-5">
             <div class="bg-light p-5  rounded">
                 <?php
-                if (isset($_SESSION['loggedin']) == true) {
+                if ($_SESSION['loggedin'] == true) {
                 ?>
                     <form method="POST" class="d-flex justify-content-end">
                         <div class="btn-group">
@@ -92,7 +92,7 @@
                 }
                 ?>
                 <?php
-                if (isset($_SESSION['editItem']) == false) {
+                if ($_SESSION['editItem'] == true) {
                     foreach ($item as $row) {
 
                 ?>
@@ -101,23 +101,15 @@
                             $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
                             ?>
                             <img class="rounded w-50 mx-auto d-block" src="<?php echo $dataUri; ?>" alt="Image of item">
-
-
-
-
                             <div class="input-group mb-3 mt-5">
                                 <span class="input-group-text">Name of the item: </span>
                                 <input value="<?php echo $row->Name ?>" name="itemName" class="form-control">
                             </div>
-
-
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Minimum Price: </span>
                                 <span class="input-group-text">€</span>
                                 <input name="itemPrice" value="<?php echo $row->Price ?>" class="form-control">
                             </div>
-
-
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Description</span>
                                 <textarea name="itemDescription" class="form-control"><?php echo $row->Description ?></textarea>
@@ -138,21 +130,25 @@
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
                         <h4>Minimum Price: €<?php echo $row->Price ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
-                <?php
+                    <?php
                     }
                 }
+                if ($_SESSION["editItem"] == false) {
+                    ?>
+                    <form method="POST">
+                        <div class="input-group mb-0">
+                            <span class="input-group-text">€</span>
+                            <input name="txtBidPrice" type="text" class="form-control">
+                            <button id="btnBidId"  name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
+                                                                                            ?> disabled <?php } ?>>Place bid </button>
+                        </div>
+                    </form>
+                <?php
+                }
                 ?>
-                <form method="POST">
-                    <div class="input-group mb-0">
-                        <span class="input-group-text">€</span>
-                        <input name="txtBidPrice" type="text" class="form-control">
-                        <button name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) { ?> disabled <?php } ?>>Place bid </button>
-                    </div>
-                </form>
             </div>
-
             <!-- Show table of all the biddings -->
-            <div class="bids">
+            <div id="refreshBids" class="bids">
                 <table class="table table-success table-striped">
                     <thead>
                         <tr>
@@ -160,18 +156,23 @@
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Date&Time</th>
+                            <th style="text-align: center" scope="col">Sell Item</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         foreach ($itemBiddings as $row) {
                         ?>
-                            <tr>
+                            <tr >
                                 <th scope="row"></th>
                                 <td><?php echo $row->FirstName ?></td>
-                                <td><?php echo $row->Price ?></td>
+                                <td id="price"><?php echo $row->Price ?></h6></td>
                                 <td><?php echo $row->Date ?></td>
+                                <form method="POST">
+                                <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
+                                </form>
                             </tr>
+                            
                         <?php
                         }
                         ?>
@@ -193,8 +194,9 @@
             <p class="text-center text-muted">© 2022 Company, Inc</p>
         </footer>
     </div>
-
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="javascript/SellItem.js" ></script>
 </body>
 
 </html>

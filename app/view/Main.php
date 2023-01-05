@@ -14,7 +14,7 @@ $user = unserialize($_SESSION['user']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="StyleSheets/Style.css" rel="stylesheet" />
 
-    <script src="javascript/ItemController.js"></script>
+    
 </head>
 
 <body>
@@ -113,7 +113,6 @@ $user = unserialize($_SESSION['user']);
                                         <form method="POST">
                                             <div class="d-flex justify-content-between align-items-center">
                                                 <div class="btn-group">
-
                                                     <button name="btnMoreInfo" value="<?php echo $row->Item_Id; ?>" class="btn btn-sm btn-outline-secondary">More Info</button>
                                                 </div>
 
