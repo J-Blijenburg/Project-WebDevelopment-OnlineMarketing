@@ -1,6 +1,3 @@
-<?php
-$user = unserialize($_SESSION['user']);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +27,7 @@ $user = unserialize($_SESSION['user']);
                     </a>
                     <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
                     <?php
-                    if ($_SESSION['loggedin'] == true) {
+                    if (isset($_SESSION['loggedin']) == true) {
                     ?>
                         <div class="d-flex justify-content-center ms-4">
                             <form method="POST">
@@ -39,16 +36,15 @@ $user = unserialize($_SESSION['user']);
                         </div>
                     <?php
                     }
+
                     ?>
                 </div>
                 <div class="d-flex">
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input class="form-control form-control-dark text-bg-dark" id="myInput" type="search" placeholder="Search" aria-label="Search" onkeyup="searchThroughItems()">
-                    </form>
+
                     <form method="POST">
                         <div class="text-end">
                             <?php
-                            if ($_SESSION['loggedin'] == true) {
+                            if (isset($_SESSION['loggedin']) == true) {
                             ?>
                                 <button class="btn btn-outline-light me-2" name="profileBtn">
                                     <?php
@@ -65,6 +61,7 @@ $user = unserialize($_SESSION['user']);
                                 ?>
                                 <button name="SignUpBtn" class="btn btn-warning">Sign-up</button>
                             <?php
+
                             }
                             ?>
                         </div>
@@ -76,48 +73,73 @@ $user = unserialize($_SESSION['user']);
     </header>
     <main>
         <section class="text-center container">
-            <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light">Online-Marketing</h1>
-                    <p class="lead text-muted">Hier kan wat informatie komen te staan</p>
+            <form method="POST">
+                <div class="row py-lg-5">
+                    <div class=" mx-auto w-50 ">
+                        <h1 class="fw-light">Online-Marketing</h1>
+                        <p class="lead text-muted">Hier kan wat informatie komen te staan</p>
+                        <div class="input-group">
+
+                            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " role="search">
+                                <input class="form-control form-control-dark " id="myInput" type="search" placeholder="Search" aria-label="Search" onkeyup="searchThroughItems()">
+                            </form>
+
+                            <select  oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
+                                <option selected>Choose...</option>
+                                <?php
+                                foreach ($allCategorys as $row) {
+                                ?>
+                                    <option value="<?php echo $row->Name ?>"><?php echo $row->Name ?></option>
+            
+                                <?php
+                                }
+                                ?>
+                                
+                            </select>
+                            <button  name="bla" class="btn btn-warning">Sign-up</button>
+                            
+
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </form>
         </section>
         <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
 
-            <div class="album  bg-light pb-5">
-                <div class="container">
-                    <div class="row">
-                        <?php
-                        foreach ($items as $row) {
-                        ?>
-                            <div class="card mx-auto p-0 mt-5" style="height:400px; width: 30%">
-                                <?php
-                                $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
-                                ?>
-                                <img src="<?php echo $dataUri; ?>" class="img-fluid" style="height:300px">
-                                <div class="card-body position-absolute bottom-0 start-0">
-                                    <h5 class="card-title">
-                                        <?php
-                                        echo $row->Name;
-                                        ?>
-                                    </h5>
-                                    <form method="POST">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <button name="btnMoreInfo" value="<?php echo $row->Item_Id; ?>" class="btn btn-sm btn-outline-secondary">More Info</button>
-                                            </div>
+        <div class="album  bg-light pb-5">
+            <div class="container">
+                <div class="row">
+                    <?php
+                    foreach ($items as $row) {
+                    ?>
+                        <div class="card mx-auto p-0 mt-5" style="height:400px; width: 30%">
+                            <?php
+                            $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
+                            ?>
+                            <img src="<?php echo $dataUri; ?>" class="img-fluid" style="height:300px">
+                            <div class="card-body position-absolute bottom-0 start-0">
+                                <h5 class="card-title">
+                                    <?php
+                                    echo $row->CategoryName;
+                                    ?>
+                                </h5>
+                                <form method="POST">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button name="btnMoreInfo" value="<?php echo $row->Item_Id; ?>" class="btn btn-sm btn-outline-secondary">More Info</button>
                                         </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                </form>
                             </div>
-                        <?php
-                        }
-                        ?>
-                    </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
-       
+        </div>
+
 
 
 

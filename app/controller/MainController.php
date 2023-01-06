@@ -1,6 +1,7 @@
 <?php
 require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
+require_once("../repositories/CategoryRepository.php");
 session_start();
 
 class MainController
@@ -9,6 +10,8 @@ class MainController
     public function main()
     {
         $repository = new ItemRepository();
+        $categoryRepository = new CategoryRepository();
+        $allCategorys = $categoryRepository->getAllCategory();
         $items = $repository->getAll();
 
         //creats an new item
@@ -31,10 +34,18 @@ class MainController
         //button to see the profile
         else if (isset($_POST["profileBtn"])) {
             header("Location: /profile");
-        } else if (isset($_POST["btnMoreInfo"])) {
+        }
+        //button to get more info about the item
+        else if (isset($_POST["btnMoreInfo"])) {
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
             header("Location: /iteminformation");
         }
+        //pudsadass
+        else if(isset($_POST["bla"])){
+            $selectedCategory = htmlspecialchars($_POST["inputCategory"]);
+            echo $selectedCategory;
+        }
+        
 
         require("../view/Main.php");
     }

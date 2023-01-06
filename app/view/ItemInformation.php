@@ -24,11 +24,18 @@
                         </svg>
                     </a>
                     <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
-                    <div class="d-flex justify-content-center  ms-4">
-                        <form method="POST">
-                            <button name="NewItemBtn" class="btn btn-success">New Item</button>
-                        </form>
-                    </div>
+                    <?php
+                    if (isset($_SESSION['loggedin']) == true) {
+                    ?>
+                        <div class="d-flex justify-content-center ms-4">
+                            <form method="POST">
+                                <button name="NewItemBtn" class="btn btn-success">New Item</button>
+                            </form>
+                        </div>
+                    <?php
+                    }
+
+                    ?>
                 </div>
                 <div class="d-flex">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -37,7 +44,7 @@
                     <form method="POST">
                         <div class="text-end">
                             <?php
-                            if ($_SESSION['loggedin'] == true) {
+                            if (isset($_SESSION['loggedin']) == true) {
                             ?>
                                 <button class="btn btn-outline-light me-2" name="profileBtn">
                                     <?php
@@ -68,7 +75,7 @@
         <main class="container mt-5">
             <div class="bg-light p-5  rounded">
                 <?php
-                if ($_SESSION['loggedin'] == true) {
+                if (isset($_SESSION['loggedin']) == true) {
                 ?>
                     <form method="POST" class="d-flex justify-content-end">
                         <div class="btn-group">
@@ -140,7 +147,7 @@
                         <div class="input-group mb-0">
                             <span class="input-group-text">€</span>
                             <input name="txtBidPrice" type="text" class="form-control">
-                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
+                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if (isset($_SESSION['loggedin']) == false) {
                                                                                                             ?> disabled <?php } ?>>Place bid </button>
                         </div>
                     </form>

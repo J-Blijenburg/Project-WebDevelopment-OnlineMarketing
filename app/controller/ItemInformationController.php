@@ -48,7 +48,9 @@ class ItemInformationController
             $itemRepository->DeleteItem($itemId);
             header("Location: /profile");
         } else if (isset($_POST["btnEditItem"])) {
+            
             $_SESSION['editItem'] = true;
+          
         }
         //Button to change the values of the item
         else if (isset($_POST["btnSaveItem"])) {
@@ -57,13 +59,11 @@ class ItemInformationController
             $itemDescription = htmlspecialchars($_POST["itemDescription"]);
 
             $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
-            
-        }
-        else if(isset($_POST["btnSellItem"])){
-                $soldItemId = htmlspecialchars($_POST["btnSellItem"]);
-                $itemRepository->DeleteItem($soldItemId);
+        } else if (isset($_POST["btnSellItem"])) {
+            $soldItemId = htmlspecialchars($_POST["btnSellItem"]);
+            $itemRepository->DeleteItem($soldItemId);
 
-                header("Location: /profile");
+            header("Location: /profile");
         }
 
 

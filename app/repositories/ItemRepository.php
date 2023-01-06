@@ -7,9 +7,19 @@ class ItemRepository extends Repository{
        
     protected $connection ;
 
+    // //get every single item there is
+    // public function getAll(){
+    //     $stmt = $this->connection->prepare("SELECT *, CA.Name FROM Items JOIN Category AS CA");
+    //     $stmt->execute();
+        
+    //     $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
+    //     $items = $stmt->fetchAll();
+    //     return $items;
+    // }
+
     //get every single item there is
     public function getAll(){
-        $stmt = $this->connection->prepare("SELECT * FROM Items");
+        $stmt = $this->connection->prepare("SELECT IT.Item_Id, IT.Name, IT.Description, IT.Price, IT.Posted_At, IT.Status, IT.Images, IT.User_Id, IT.Category_Id, IT.Features, CA.Name AS CategoryName FROM Items AS IT JOIN Category AS CA  ON IT.Category_Id = CA.Category_Id");
         $stmt->execute();
         
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
@@ -33,6 +43,17 @@ class ItemRepository extends Repository{
     public function getItemById($itemId){
         $stmt = $this->connection->prepare("SELECT * FROM Items WHERE Item_Id = :itemId");
         $stmt->bindParam(':itemId', $itemId);
+
+        $stmt->execute();
+        
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
+        $item = $stmt->fetchAll();
+        return $item;
+    }
+    //get every item selected by category
+    public function getItemByCategoryId($categoryId){
+        $stmt = $this->connection->prepare("SELECT * FROM Items WHERE Category_Id = :categoryId");
+        $stmt->bindParam(':categoryId', $categoryId);
 
         $stmt->execute();
         
