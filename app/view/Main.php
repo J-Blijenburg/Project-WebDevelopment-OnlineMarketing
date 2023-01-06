@@ -81,7 +81,7 @@
                         <div class="input-group">
 
                             <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " role="search">
-                                <input class="form-control form-control-dark " id="myInput" type="search" placeholder="Search" aria-label="Search" onkeyup="searchThroughItems()">
+                                <input class="form-control form-control-dark " id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItems()">
                             </form>
 
                             <select  oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
@@ -95,10 +95,8 @@
                                 }
                                 ?>
                                 
-                            </select>
-                            <button  name="bla" class="btn btn-warning">Sign-up</button>
-                            
-
+                            </select>  
+                            <button name="RefreshBtn" class="btn btn-warning">Refresh</button>       
                         </div>
 
                     </div>
@@ -113,7 +111,7 @@
                     <?php
                     foreach ($items as $row) {
                     ?>
-                        <div class="card mx-auto p-0 mt-5" style="height:400px; width: 30%">
+                        <div class="card mx-auto p-0 mt-5" style="height:420px; width: 30%">
                             <?php
                             $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
                             ?>
@@ -121,9 +119,14 @@
                             <div class="card-body position-absolute bottom-0 start-0">
                                 <h5 class="card-title">
                                     <?php
-                                    echo $row->CategoryName;
+                                    echo $row->Name;
                                     ?>
                                 </h5>
+                                <div class="card-category mb-2" style="font-size: 75%">
+                                <?php
+                                   echo $row->CategoryName;
+                                    ?>
+                                </div>
                                 <form method="POST">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">

@@ -40,10 +40,8 @@ class MainController
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
             header("Location: /iteminformation");
         }
-        //pudsadass
-        else if(isset($_POST["bla"])){
-            $selectedCategory = htmlspecialchars($_POST["inputCategory"]);
-            echo $selectedCategory;
+        else if(isset($_POST["RefreshBtn"])){
+            header("Location: /main");
         }
         
 
