@@ -9,6 +9,8 @@ class Item{
     public string $status;
     public string $image;
     public User $user;
+    public Category $category;
+    public string $features;
 }
 
 ?>

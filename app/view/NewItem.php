@@ -104,7 +104,10 @@ $user = unserialize($_SESSION['user']);
                     </select>
 
                 </div>
-
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Features</span>
+                    <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>
+                </div>
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="ItemUpload">Upload</label>

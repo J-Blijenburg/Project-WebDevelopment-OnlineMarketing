@@ -14,7 +14,7 @@ $user = unserialize($_SESSION['user']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="StyleSheets/Style.css" rel="stylesheet" />
 
-    
+
 </head>
 
 <body>
@@ -43,7 +43,7 @@ $user = unserialize($_SESSION['user']);
                 </div>
                 <div class="d-flex">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                        <input class="form-control form-control-dark text-bg-dark" id="myInput" type="search" placeholder="Search" aria-label="Search" onkeyup="search()">
                     </form>
                     <form method="POST">
                         <div class="text-end">
@@ -85,48 +85,44 @@ $user = unserialize($_SESSION['user']);
         </section>
 
 
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <?php
-                    foreach ($items as $row) {
+        <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
 
-                    ?>
-
-
-                        <div class="col">
-                            <div class="card shadow-sm">
-
+            <div class="album  bg-light pb-5">
+                <div class="container">
+                    <div class="row">
+                        <?php
+                        foreach ($items as $row) {
+                        ?>
+                            <div class="card mx-auto p-0 mt-5" style="height:400px; width: 30%">
                                 <?php
-
                                 $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
                                 ?>
-                                <img src="<?php echo $dataUri; ?>">
-                                <div class="card-body">
-                                    <h5>
+                                <img src="<?php echo $dataUri; ?>" class="img-fluid" style="height:300px">
+                                <div class="card-body position-absolute bottom-0 start-0">
+                                    <h5 class="card-title">
                                         <?php
-
                                         echo $row->Name;
                                         ?>
                                     </h5>
-                                    <h5>
-                                        <form method="POST">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="btn-group">
-                                                    <button name="btnMoreInfo" value="<?php echo $row->Item_Id; ?>" class="btn btn-sm btn-outline-secondary">More Info</button>
-                                                </div>
-
+                                    <form method="POST">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button name="btnMoreInfo" value="<?php echo $row->Item_Id; ?>" class="btn btn-sm btn-outline-secondary">More Info</button>
                                             </div>
-                                        </form>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
-        </div>
+       
+
+
+
     </main>
     <div class="container">
         <footer class="py-3 my-4 ">
@@ -142,6 +138,7 @@ $user = unserialize($_SESSION['user']);
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="javascript/SearchFunction.js"></script>
 </body>
 
 </html>

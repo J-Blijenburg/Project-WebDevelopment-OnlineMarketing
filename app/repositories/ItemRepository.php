@@ -41,14 +41,15 @@ class ItemRepository extends Repository{
         return $item;
     }
     //create a new item
-    public function setNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $itemUpload)
+    public function setNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $itemUpload, $itemFeatures)
     {       
-        $query = $this->connection->prepare("INSERT INTO Items (Name, Description, Price, Posted_At, Status, Images, User_Id, Category_Id) VALUES 
-          (:Name, :Description, :Price, now(), null, :Images, 1, :Category_Id)");
+        $query = $this->connection->prepare("INSERT INTO Items (Name, Description, Price, Posted_At, Status, Images, User_Id, Category_Id, Features) VALUES 
+          (:Name, :Description, :Price, now(), null, :Images, 1, :Category_Id, :Features)");
         $query->bindParam(':Name', $itemName);
         $query->bindParam(':Description', $itemDescription);
         $query->bindParam(':Price', $itemPrice);
-        $query->bindParam(':Category_Id', $selectedCategory);
+        $query->bindParam(':Category_Id', $selectedCategory); 
+        $query->bindParam(':Features', $itemFeatures);
         $query->bindparam(':Images', $itemUpload);
 
         $query->execute();

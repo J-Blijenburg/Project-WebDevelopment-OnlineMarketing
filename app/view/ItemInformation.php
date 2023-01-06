@@ -26,13 +26,13 @@
                     <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
                     <div class="d-flex justify-content-center  ms-4">
                         <form method="POST">
-                            <button  name="NewItemBtn" class="btn btn-success">New Item</button>
+                            <button name="NewItemBtn" class="btn btn-success">New Item</button>
                         </form>
                     </div>
                 </div>
                 <div class="d-flex">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input  type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
                     </form>
                     <form method="POST">
                         <div class="text-end">
@@ -130,6 +130,7 @@
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
                         <h4>Minimum Price: €<?php echo $row->Price ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
+                        <h5><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
                     <?php
                     }
                 }
@@ -139,8 +140,8 @@
                         <div class="input-group mb-0">
                             <span class="input-group-text">€</span>
                             <input name="txtBidPrice" type="text" class="form-control">
-                            <button id="btnBidId"  name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
-                                                                                            ?> disabled <?php } ?>>Place bid </button>
+                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
+                                                                                                            ?> disabled <?php } ?>>Place bid </button>
                         </div>
                     </form>
                 <?php
@@ -163,16 +164,17 @@
                         <?php
                         foreach ($itemBiddings as $row) {
                         ?>
-                            <tr >
+                            <tr>
                                 <th scope="row"></th>
                                 <td><?php echo $row->FirstName ?></td>
-                                <td id="price"><?php echo $row->Price ?></h6></td>
+                                <td id="price"><?php echo $row->Price ?></h6>
+                                </td>
                                 <td><?php echo $row->Date ?></td>
                                 <form method="POST">
-                                <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
+                                    <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
                                 </form>
                             </tr>
-                            
+
                         <?php
                         }
                         ?>
@@ -194,9 +196,9 @@
             <p class="text-center text-muted">© 2022 Company, Inc</p>
         </footer>
     </div>
-  
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="javascript/SellItem.js" ></script>
+    <script src="javascript/SellItem.js"></script>
 </body>
 
 </html>

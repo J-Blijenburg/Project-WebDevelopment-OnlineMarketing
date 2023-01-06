@@ -18,13 +18,14 @@ class NewItemController
             $itemDescription = htmlspecialchars($_POST["ItemDescription"]);
             $itemPrice = htmlspecialchars($_POST["ItemPrice"]);
             $selectedCategory = htmlspecialchars($_POST["inputCategory"]);
-
+            $itemFeatures = htmlspecialchars($_POST["ItemFeatures"]);
+            
             //look for the file path and the get all the information of that file
             $filename = $_FILES['ItemUpload']['tmp_name'];
             $image =  file_get_contents($filename);
 
             //send all the information to the repository
-            $repository->setNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $image);
+            $repository->setNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $image, $itemFeatures);
         }
 
         else if (isset($_POST["ItemCancel"])) {
