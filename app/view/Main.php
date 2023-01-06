@@ -32,7 +32,7 @@ $user = unserialize($_SESSION['user']);
                     <?php
                     if ($_SESSION['loggedin'] == true) {
                     ?>
-                        <div class="d-flex justify-content-center  ms-4">
+                        <div class="d-flex justify-content-center ms-4">
                             <form method="POST">
                                 <button name="NewItemBtn" class="btn btn-success">New Item</button>
                             </form>
@@ -43,7 +43,7 @@ $user = unserialize($_SESSION['user']);
                 </div>
                 <div class="d-flex">
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input class="form-control form-control-dark text-bg-dark" id="myInput" type="search" placeholder="Search" aria-label="Search" onkeyup="search()">
+                        <input class="form-control form-control-dark text-bg-dark" id="myInput" type="search" placeholder="Search" aria-label="Search" onkeyup="searchThroughItems()">
                     </form>
                     <form method="POST">
                         <div class="text-end">
@@ -75,7 +75,7 @@ $user = unserialize($_SESSION['user']);
 
     </header>
     <main>
-        <section class="py-5 text-center container">
+        <section class="text-center container">
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">Online-Marketing</h1>
@@ -83,8 +83,6 @@ $user = unserialize($_SESSION['user']);
                 </div>
             </div>
         </section>
-
-
         <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
 
             <div class="album  bg-light pb-5">

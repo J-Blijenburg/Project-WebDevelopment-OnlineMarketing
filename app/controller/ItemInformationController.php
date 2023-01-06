@@ -40,7 +40,7 @@ class ItemInformationController
         else if (isset($_POST["profileBtn"])) {
             header("Location: /profile");
         }
-        //button to see the profile
+        //button to place a bid on the item
         else if (isset($_POST["txtBidPrice"])) {
             $bidPrice = htmlspecialchars($_POST["txtBidPrice"]);
             $bidRepository->setNewBid($bidPrice, $itemId, $user->user_Id);
@@ -57,6 +57,7 @@ class ItemInformationController
             $itemDescription = htmlspecialchars($_POST["itemDescription"]);
 
             $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
+            
         }
         else if(isset($_POST["btnSellItem"])){
                 $soldItemId = htmlspecialchars($_POST["btnSellItem"]);

@@ -5,40 +5,37 @@ session_start();
 
 class MainController
 {
-   
+
     public function main()
     {
         $repository = new ItemRepository();
         $items = $repository->getAll();
 
+        //creats an new item
+        if (isset($_POST["NewItemBtn"])) {
+            header("Location: /newitem");
+        }
         //button to login
-        if (isset($_POST["LoginBtn"]) ) {
+        else if (isset($_POST["LoginBtn"])) {
             header("Location: /login");
         }
         //button to signup
-        else if(isset($_POST["SignUpBtn"])){
+        else if (isset($_POST["SignUpBtn"])) {
             header("Location: /newuser");
         }
         //button to logout
-        else if(isset($_POST["LogOutBtn"])){
+        else if (isset($_POST["LogOutBtn"])) {
             $_SESSION['loggedin'] = false;
             header("Location: /main");
         }
         //button to see the profile
-        else if(isset($_POST["profileBtn"])){
+        else if (isset($_POST["profileBtn"])) {
             header("Location: /profile");
-        }
-        else if(isset($_POST["btnMoreInfo"])){
+        } else if (isset($_POST["btnMoreInfo"])) {
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
             header("Location: /iteminformation");
         }
-        
-        require("../view/Main.php");
 
-        
+        require("../view/Main.php");
     }
 }
-
-
-
-
