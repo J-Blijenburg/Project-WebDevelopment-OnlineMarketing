@@ -30,7 +30,7 @@
                     </a>
                     <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
                     <?php
-                    if (isset($_SESSION['loggedin']) == true) {
+                    if ($_SESSION['loggedin'] == true) {
                     ?>
                         <div class="d-flex justify-content-center ms-4">
                             <form method="POST">

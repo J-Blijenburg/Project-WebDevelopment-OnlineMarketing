@@ -26,17 +26,7 @@ $user = unserialize($_SESSION['user']);
                     </svg>
                 </a>
                 <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
-                <?php
-                if ($_SESSION['loggedin'] == true) {
-                ?>
-                    <div class="d-flex justify-content-center ms-4">
-                        <form method="POST">
-                            <button name="NewItemBtn" class="btn btn-success">New Item</button>
-                        </form>
-                    </div>
-                <?php
-                }
-                ?>
+                
             </div>
             <div class="d-flex">
                 <form method="POST">

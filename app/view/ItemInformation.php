@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#712cf9">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="StyleSheets/Style.css" rel="stylesheet" />
+    <link href="StyleSheets/StyleSheet.css" rel="stylesheet" />
 </head>
 <header class="p-3 text-bg-dark">
 
@@ -25,7 +25,7 @@
                     </a>
                     <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
                     <?php
-                    if (isset($_SESSION['loggedin']) == true) {
+                    if ($_SESSION['loggedin'] == true) {
                     ?>
                         <div class="d-flex justify-content-center ms-4">
                             <form method="POST">
@@ -38,13 +38,10 @@
                     ?>
                 </div>
                 <div class="d-flex">
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-                    </form>
                     <form method="POST">
                         <div class="text-end">
                             <?php
-                            if (isset($_SESSION['loggedin']) == true) {
+                            if ($_SESSION['loggedin'] == true) {
                             ?>
                                 <button class="btn btn-outline-light me-2" name="profileBtn">
                                     <?php
@@ -73,9 +70,9 @@
 <body>
     <div class="content">
         <main class="container mt-5">
-            <div class="bg-light p-5  rounded">
+            <div class="bg-light px-5 pt-4 pb-4 rounded">
                 <?php
-                if (isset($_SESSION['loggedin']) == true) {
+                if ($_SESSION['loggedin'] == true) {
                 ?>
                     <form method="POST" class="d-flex justify-content-end">
                         <div class="btn-group">
@@ -133,7 +130,7 @@
                         <?php
                         $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
                         ?>
-                        <img class="rounded w-50 mx-auto d-block" src="<?php echo $dataUri; ?>" alt="Image of item">
+                        <img class="rounded w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
                         <h4>Minimum Price: €<?php echo $row->Price ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
@@ -146,10 +143,19 @@
                     <form method="POST">
                         <div class="input-group mb-0">
                             <span class="input-group-text">€</span>
-                            <input name="txtBidPrice" type="text" class="form-control">
-                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if (isset($_SESSION['loggedin']) == false) {
+                            <input name="txtBidPrice" placeholder="e.g. € 0.00,-" type="text" class="form-control">
+                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
                                                                                                             ?> disabled <?php } ?>>Place bid </button>
                         </div>
+                        <?php
+                        if ($_SESSION["validInput"] == true) {
+                           ?>
+                            <div class="errorMessage pt-3 ps-5" >
+                                Please, fill in a valid number.
+                            </div>
+                           <?php
+                        }
+                        ?>
                     </form>
                 <?php
                 }
@@ -174,9 +180,18 @@
                             <tr>
                                 <th scope="row"></th>
                                 <td><?php echo $row->FirstName ?></td>
-                                <td id="price"><?php echo $row->Price ?></h6>
+                                <td id="price"><?php 
+                                $priceFormat = number_format((float)$row->Price, 2, '.', '');
+                                
+                                echo "€ $priceFormat,-" 
+                                ?>
                                 </td>
-                                <td><?php echo $row->Date ?></td>
+                                <!-- https://stackoverflow.com/questions/136782/convert-from-mysql-datetime-to-another-format-with-php -->
+                                <td><?php
+                                    $time = strtotime($row->Date);
+                                    $datetimeFormat = date("j M o - H:i", $time);
+
+                                    echo $datetimeFormat ?></td>
                                 <form method="POST">
                                     <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
                                 </form>

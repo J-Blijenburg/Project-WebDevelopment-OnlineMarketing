@@ -2,7 +2,7 @@
 
 class Bid{
     public int $bidId;
-    public int $price;
+    public float $price;
     public string $date;
     public Item $itemId;
     public User $userId;

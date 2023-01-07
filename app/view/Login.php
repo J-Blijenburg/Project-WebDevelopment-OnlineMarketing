@@ -22,7 +22,7 @@
 
         <form method='POST'>
             <input name="email" class="form-control " id="floatingInput" placeholder="Email">
-            <input name="password" class="form-control mt-3" id="ds" placeholder="Password">
+            <input type="password" name="password" class="form-control mt-3" id="ds" placeholder="Password">
             <input type="hidden" name="action" value="submit" />
             <button name="BtnLoginUser" class="w-100 btn btn-lg btn-primary mt-3">Login</button>
         </form>
