@@ -2,6 +2,7 @@
 require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
 require_once("../repositories/BidRepository.php");
+require_once("../repositories/ImageRepository.php");
 session_start();
 
 class ItemInformationController
@@ -19,9 +20,11 @@ class ItemInformationController
         $itemRepository = new ItemRepository();
         $userRepository = new UserRepository();
         $bidRepository = new BidRepository();
+        $imageRepository = new ImageRepository();
         $itemId = $_SESSION['selectedItem'];
         $item = $itemRepository->getItemById($itemId);
         $itemBiddings = $bidRepository->getBiddingById($itemId);
+        $itemImages = $imageRepository->getAllImageByItemId($itemId);
 
 
         //button to login

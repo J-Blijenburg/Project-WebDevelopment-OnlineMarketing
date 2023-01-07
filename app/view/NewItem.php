@@ -107,30 +107,20 @@ $user = unserialize($_SESSION['user']);
                     <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>
                 </div>
 
-                <div class="input-group mb-3">
+
+                <!-- This div is part of the Drag and Drop API -->
+                <div class="input-group mb-3" style="display: flex">
                     <label class="input-group-text" for="ItemUpload">Upload</label>
 
-
-                    <!-- <input name="ItemUpload" type="file" class="form-control"> -->
-
-                        <input name="ItemUpload" type="file" multiple id="myFileInput">
-                </div>
-
-
-                <div class="DRAGDROP">
-
-                    <h1>Drag and Drop API</h1>
-                    <ul class="tsummary summary--with-divider">
-                        <li>allows you to drag and drop any element</li>
-                        <li>commonlu used to allow dragging in files for uploads</li>
-                    </ul>
-                    <div class="drop-zone" style="border-color: red">
-                        <div id="myDraggableElement" draggable="true"></div>
+                    <!-- https://www.youtube.com/watch?v=OHTudicK7nY -->
+                    <div class="drop-zone" style="border-color: black; flex-grow: 1;">
+                        <input style="position: absolute; font-size: 70%;" name="ItemUpload[]" type="file" multiple id="myFileInput">
                     </div>
-                    <div class="drop-zone" style="border-color: blue"></div>
+                    <div id="myDraggableElement" draggable="true">
+
+
+                    </div>
                 </div>
-
-
 
         </div>
 

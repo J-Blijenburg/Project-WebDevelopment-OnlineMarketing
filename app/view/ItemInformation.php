@@ -74,7 +74,7 @@
                 <?php
                 if ($_SESSION['loggedin'] == true) {
                 ?>
-                    <form method="POST" class="d-flex justify-content-end">
+                    <form method="POST" class="d-flex justify-content-end pb-3">
                         <div class="btn-group">
                             <button name="btnEditItem" class="btn btn-outline-secondary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -127,17 +127,81 @@
 
                     foreach ($item as $row) {
                     ?>
-                        <?php
-                        $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
-                        ?>
-                        <img class="rounded w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
+
+                        <div id="carouselExample" class="carousel slide">
+                            <div class="carousel-inner">
+                                <?php
+                                $i = 0;
+                                foreach ($itemImages as $rowImages) {
+                                    $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($rowImages->Image);
+
+                                    if ($i == 0) {
+                                ?>
+                                        <div class="carousel-item active">
+                                            <img class="w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                        </div>
+                                    <?php
+                                    $i++;
+                                    } else {
+                                    ?>
+                                        <div class="carousel-item">
+                                            <img class="w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
+
+
+
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+
+
+
+                        <!-- <div id="carouselExampleIndicators" class="carousel slide">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner">
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div> -->
+
+
+
+
+
+
+
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
                         <h4>Minimum Price: € <?php
-                                            $priceFormat = number_format((float)$row->Price, 2, '.', '');
-                                            echo $priceFormat;
-                                            ?>,-</h4>
+                                                $priceFormat = number_format((float)$row->Price, 2, '.', '');
+                                                echo $priceFormat;
+                                                ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
-                        <h5><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
+                        <h5 class="pb-2"><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
                     <?php
                     }
                 }
@@ -224,7 +288,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SellItem.js"></script>
-    
+
 </body>
 
 </html>
