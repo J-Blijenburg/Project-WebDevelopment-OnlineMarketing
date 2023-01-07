@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#712cf9">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="StyleSheets/Style.css" rel="stylesheet" />
+    <link href="StyleSheets/StyleSheet.css" rel="stylesheet" />
 
 
 </head>
@@ -17,6 +17,9 @@
 <body>
 
     <header class="p-3 text-bg-dark">
+
+
+
         <div class="container">
             <div class="d-flex justify-content-between ">
                 <div class="d-flex">
@@ -36,7 +39,6 @@
                         </div>
                     <?php
                     }
-
                     ?>
                 </div>
                 <div class="d-flex">
@@ -44,7 +46,7 @@
                     <form method="POST">
                         <div class="text-end">
                             <?php
-                            if (isset($_SESSION['loggedin']) == true) {
+                            if ($_SESSION['loggedin'] == true) {
                             ?>
                                 <button class="btn btn-outline-light me-2" name="profileBtn">
                                     <?php
@@ -61,7 +63,6 @@
                                 ?>
                                 <button name="SignUpBtn" class="btn btn-warning">Sign-up</button>
                             <?php
-
                             }
                             ?>
                         </div>
@@ -69,42 +70,35 @@
                 </div>
             </div>
         </div>
-
     </header>
     <main>
-        <section class="text-center container">
-            <form method="POST">
-                <div class="row py-lg-5">
-                    <div class=" mx-auto w-50 ">
+        <div class="headerInfo" style="width: 100%">
+            <section class="text-center container ">
+                <form method="POST">
+                    <div class="row py-lg-5 w-65 position-absolute top-50 start-50 translate-middle">
                         <h1 class="fw-light">Online-Marketing</h1>
-                        <p class="lead text-muted">Hier kan wat informatie komen te staan</p>
+                        <p class="badge rounded-pill text-bg-primary">User the searchbar and category function to optimize your search result</p>
                         <div class="input-group">
-
-                            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " role="search">
-                                <input class="form-control form-control-dark " id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItems()">
-                            </form>
-
-                            <select  oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
+                            <input class="form-control form-control-dark w-50" id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItems()">
+                            <select oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
                                 <option selected>Choose...</option>
                                 <?php
                                 foreach ($allCategorys as $row) {
                                 ?>
                                     <option value="<?php echo $row->Name ?>"><?php echo $row->Name ?></option>
-            
                                 <?php
                                 }
                                 ?>
-                                
-                            </select>  
-                            <button name="RefreshBtn" class="btn btn-warning">Refresh</button>       
+                            </select>
+                            <button name="RefreshBtn" class="btn btn-warning">Refresh</button>
                         </div>
-
                     </div>
-                </div>
-            </form>
-        </section>
-        <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
+                </form>
+            </section>
+        </div>
+        <img class=imageHeader src=Img/Background.jpeg style="width: 100%">
 
+        <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
         <div class="album  bg-light pb-5">
             <div class="container">
                 <div class="row">
@@ -123,8 +117,8 @@
                                     ?>
                                 </h5>
                                 <div class="card-category mb-2" style="font-size: 75%">
-                                <?php
-                                   echo $row->CategoryName;
+                                    <?php
+                                    echo $row->CategoryName;
                                     ?>
                                 </div>
                                 <form method="POST">
@@ -142,10 +136,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </main>
     <div class="container">
         <footer class="py-3 my-4 ">
