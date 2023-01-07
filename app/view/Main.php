@@ -104,12 +104,21 @@
                 <div class="row">
                     <?php
                     foreach ($items as $row) {
+                     
                     ?>
                         <div class="card mx-auto p-0 mt-5" style="height:420px; width: 30%">
+                    
                             <?php
-                            $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
+                          
+                            $image =  $imageRepository->getSingleImageByItemId($row->Item_Id);
+                            foreach ($image as $imageRow) {
+                                $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($imageRow->Image);
+                            }
+
                             ?>
-                            <img src="<?php echo $dataUri; ?>" class="img-fluid" style="height:300px">
+                            <img src="<?php
+                                        echo $dataUri;
+                                        ?>" class="img-fluid" style="height:300px">
                             <div class="card-body position-absolute bottom-0 start-0">
                                 <h5 class="card-title">
                                     <?php
@@ -136,6 +145,11 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
     </main>
     <div class="container">
         <footer class="py-3 my-4 ">
@@ -148,10 +162,17 @@
             </ul>
             <p class="text-center text-muted">© 2022 Company, Inc</p>
         </footer>
+
     </div>
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SearchFunction.js"></script>
+
 </body>
+
+
 
 </html>

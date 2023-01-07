@@ -2,6 +2,7 @@
 require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
 require_once("../repositories/CategoryRepository.php");
+require_once("../repositories/ImageRepository.php");
 session_start();
 
 class MainController
@@ -11,8 +12,11 @@ class MainController
     {
         $repository = new ItemRepository();
         $categoryRepository = new CategoryRepository();
+        $imageRepository = new ImageRepository();
         $allCategorys = $categoryRepository->getAllCategory();
         $items = $repository->getAll();
+
+        
 
         //creats an new item
         if (isset($_POST["NewItemBtn"])) {

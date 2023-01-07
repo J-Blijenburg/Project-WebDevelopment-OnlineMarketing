@@ -25,4 +25,14 @@ class ImageRepository extends Repository{
         $images = $query->fetchAll();
         return $images;
     }
+
+    public function getSingleImageByItemId($itemId){
+        $query = $this->connection->prepare("SELECT * FROM Images WHERE Item_Id=:Item_Id ORDER BY Image_Id LIMIT 1");
+        $query->bindparam(':Item_Id', $itemId);
+        $query->execute();
+        
+        $query->setFetchMode(PDO::FETCH_CLASS, 'image');
+        $images = $query->fetchAll();
+        return $images;
+    }
 }
