@@ -12,7 +12,7 @@ $user = unserialize($_SESSION['user']);
     <meta name="theme-color" content="#712cf9">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="StyleSheets/Style.css" rel="stylesheet" />
+    <link href="StyleSheets/StyleSheet.css" rel="stylesheet" />
 </head>
 <header class="p-3 text-bg-dark">
 
@@ -26,7 +26,7 @@ $user = unserialize($_SESSION['user']);
                     </svg>
                 </a>
                 <a class="nav-link px-2 text-white ms-2 fs-5 d-flex align-items-center">Online-Marketing</a>
-                
+
             </div>
             <div class="d-flex">
                 <form method="POST">
@@ -109,8 +109,27 @@ $user = unserialize($_SESSION['user']);
 
                 <div class="input-group mb-3">
                     <label class="input-group-text" for="ItemUpload">Upload</label>
-                    <input name="ItemUpload" type="file" class="form-control">
+
+
+                    <!-- <input name="ItemUpload" type="file" class="form-control"> -->
+
+                        <input name="ItemUpload" type="file" multiple id="myFileInput">
                 </div>
+
+
+                <div class="DRAGDROP">
+
+                    <h1>Drag and Drop API</h1>
+                    <ul class="tsummary summary--with-divider">
+                        <li>allows you to drag and drop any element</li>
+                        <li>commonlu used to allow dragging in files for uploads</li>
+                    </ul>
+                    <div class="drop-zone" style="border-color: red">
+                        <div id="myDraggableElement" draggable="true"></div>
+                    </div>
+                    <div class="drop-zone" style="border-color: blue"></div>
+                </div>
+
 
 
         </div>
@@ -137,7 +156,9 @@ $user = unserialize($_SESSION['user']);
             <p class="text-center text-muted">© 2022 Company, Inc</p>
         </footer>
     </div>
+    <script src="javascript/DragDropAPI.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
