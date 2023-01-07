@@ -132,7 +132,10 @@
                         ?>
                         <img class="rounded w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
-                        <h4>Minimum Price: €<?php echo $row->Price ?>,-</h4>
+                        <h4>Minimum Price: € <?php
+                                            $priceFormat = number_format((float)$row->Price, 2, '.', '');
+                                            echo $priceFormat;
+                                            ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
                         <h5><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
                     <?php
@@ -149,11 +152,11 @@
                         </div>
                         <?php
                         if ($_SESSION["validInput"] == true) {
-                           ?>
-                            <div class="errorMessage pt-3 ps-5" >
+                        ?>
+                            <div class="errorMessage pt-3 ps-5">
                                 Please, fill in a valid number.
                             </div>
-                           <?php
+                        <?php
                         }
                         ?>
                     </form>
@@ -180,11 +183,11 @@
                             <tr>
                                 <th scope="row"></th>
                                 <td><?php echo $row->FirstName ?></td>
-                                <td id="price"><?php 
-                                $priceFormat = number_format((float)$row->Price, 2, '.', '');
-                                
-                                echo "€ $priceFormat,-" 
-                                ?>
+                                <td id="price"><?php
+                                                $priceFormat = number_format((float)$row->Price, 2, '.', '');
+
+                                                echo "€ $priceFormat,-"
+                                                ?>
                                 </td>
                                 <!-- https://stackoverflow.com/questions/136782/convert-from-mysql-datetime-to-another-format-with-php -->
                                 <td><?php
