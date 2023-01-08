@@ -76,7 +76,7 @@ $user = unserialize($_SESSION['user']);
             <form method="POST" enctype="multipart/form-data">
 
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Name of the product</span>
+                    <span class="input-group-text" id="basic-addon1">Name of product</span>
                     <input name="ItemName" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
 
@@ -102,6 +102,16 @@ $user = unserialize($_SESSION['user']);
                     </select>
 
                 </div>
+
+
+
+
+
+
+
+
+
+
                 <div class="input-group mb-3">
                     <span class="input-group-text">Features</span>
                     <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>
