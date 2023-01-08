@@ -9,7 +9,7 @@ class ItemRepository extends Repository{
 
     //get every single item there is
     public function getAll(){
-        $stmt = $this->connection->prepare("SELECT IT.Item_Id, IT.Name, IT.Description, IT.Price, IT.Posted_At, IT.Status, IT.User_Id, IT.Category_Id, IT.Features, CA.Name AS CategoryName FROM Items AS IT JOIN Category AS CA  ON IT.Category_Id = CA.Category_Id ");
+        $stmt = $this->connection->prepare("SELECT IT.Item_Id, IT.Name, IT.Description, IT.Price, IT.Posted_At, IT.User_Id, IT.Category_Id, IT.Features, CA.Name AS CategoryName FROM Items AS IT JOIN Category AS CA  ON IT.Category_Id = CA.Category_Id ");
         $stmt->execute();
         
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
@@ -57,8 +57,8 @@ class ItemRepository extends Repository{
     //create a new item
     public function getAndSetNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $userId, $itemFeatures)
     {       
-        $query = $this->connection->prepare("INSERT INTO Items (Name, Description, Price, Posted_At, Status, User_Id, Category_Id, Features) VALUES 
-          (:Name, :Description, :Price, now(), null, :User_Id, :Category_Id, :Features); ");
+        $query = $this->connection->prepare("INSERT INTO Items (Name, Description, Price, Posted_At, User_Id, Category_Id, Features) VALUES 
+          (:Name, :Description, :Price, now(), :User_Id, :Category_Id, :Features); ");
         $query->bindParam(':Name', $itemName);
         $query->bindParam(':Description', $itemDescription);
         $query->bindParam(':Price', $itemPrice);
@@ -78,23 +78,6 @@ class ItemRepository extends Repository{
         
     }
 
-    //   //create a new item
-    //   public function setNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $userId, $itemUpload, $itemFeatures)
-    //   {       
-    //       $query = $this->connection->prepare("INSERT INTO Items (Name, Description, Price, Posted_At, Status, Images, User_Id, Category_Id, Features) VALUES 
-    //         (:Name, :Description, :Price, now(), null, :Images, :User_Id, :Category_Id, :Features)");
-    //       $query->bindParam(':Name', $itemName);
-    //       $query->bindParam(':Description', $itemDescription);
-    //       $query->bindParam(':Price', $itemPrice);
-    //       $query->bindparam(':Images', $itemUpload);
-    //       $query->bindparam(':User_Id', $userId);
-    //       $query->bindParam(':Category_Id', $selectedCategory); 
-    //       $query->bindParam(':Features', $itemFeatures);
-          
-  
-    //       $query->execute();
-    //   }
-
      //edit item by item id
      public function EditItemById($itemId, $itemName, $itemDescription, $itemPrice)
      {       
@@ -113,6 +96,11 @@ class ItemRepository extends Repository{
     //Delete the selected item by itemid
     public function DeleteItem($itemId)
     {      
+         //First delete all the bids which are connected to the item
+         $query = $this->connection->prepare("DELETE FROM Images WHERE Item_Id = :itemId");
+         $query->bindParam(':itemId', $itemId);
+         $query->execute();
+
         //First delete all the bids which are connected to the item
         $query = $this->connection->prepare("DELETE FROM Bids WHERE Item_Id = :itemId");
         $query->bindParam(':itemId', $itemId);

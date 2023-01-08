@@ -16,8 +16,8 @@ class BidRepository extends Repository
     }
     //create a new item
     public function setNewBid($price, $itemId, $userId)
-    {       
-         $query = $this->connection->prepare("INSERT INTO Bids (Bid_Id, Price, Date, Item_Id, User_Id) 
+    {
+        $query = $this->connection->prepare("INSERT INTO Bids (Bid_Id, Price, Date, Item_Id, User_Id) 
          VALUES (NULL, :price, now(), :itemId, :userId)");
 
         $query->bindParam(':price', $price);

@@ -101,10 +101,44 @@
 
                 ?>
                         <form method="POST">
-                            <?php
-                            $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($row->Images);
-                            ?>
-                            <img class="rounded w-50 mx-auto d-block" src="<?php echo $dataUri; ?>" alt="Image of item">
+                            <div id="carouselExample" class="carousel slide">
+                                <div class="carousel-inner">
+                                    <?php
+                                    $i = 0;
+                                    foreach ($itemImages as $rowImages) {
+                                        $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($rowImages->Image);
+
+                                        if ($i == 0) {
+                                    ?>
+                                            <div class="carousel-item active">
+                                                <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                            </div>
+                                        <?php
+                                            $i++;
+                                        } else {
+                                        ?>
+                                            <div class="carousel-item">
+                                                <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
+
+
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
                             <div class="input-group mb-3 mt-5">
                                 <span class="input-group-text">Name of the item: </span>
                                 <input value="<?php echo $row->Name ?>" name="itemName" class="form-control">
@@ -138,14 +172,14 @@
                                     if ($i == 0) {
                                 ?>
                                         <div class="carousel-item active">
-                                            <img class="w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                            <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
                                         </div>
                                     <?php
                                         $i++;
                                     } else {
                                     ?>
                                         <div class="carousel-item">
-                                            <img class="w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                            <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
                                         </div>
                                     <?php
                                     }
@@ -201,8 +235,7 @@
                         <div class="input-group mt-4">
                             <span class="input-group-text">€</span>
                             <input name="txtBidPrice" placeholder="e.g. € 0.00,-" type="text" class="form-control">
-                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
-                                                                                                            ?> disabled <?php } ?>>Place bid </button>
+                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) { ?> disabled <?php } ?>>Place bid </button>
                         </div>
                         <?php
                         if ($_SESSION["validInput"] == true) {
@@ -230,11 +263,12 @@
                             <th scope="col">Sell Item</th>
                         </tr>
                     </thead>
-                    <tbody>
+
+                    <tbody id=bidBodyId>
                         <?php
                         foreach ($itemBiddings as $row) {
                         ?>
-                            <tr>
+                            <tr id="test">
                                 <th scope="row"></th>
                                 <td><?php echo $row->FirstName ?></td>
                                 <td id="price"><?php
@@ -249,7 +283,7 @@
                                     $datetimeFormat = date("j M o - H:i", $time);
 
                                     echo $datetimeFormat ?></td>
-                                <form method="POST">
+                                <form id="sellButtonId" method="POST">
                                     <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
                                 </form>
                             </tr>
@@ -258,6 +292,7 @@
                         }
                         ?>
                     </tbody>
+
                 </table>
             </div>
         </main>
@@ -275,7 +310,7 @@
             <p class="text-center text-muted">© 2022 Company, Inc</p>
         </footer>
     </div>
-
+    <script src="javascript/BidItem.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SellItem.js"></script>
 

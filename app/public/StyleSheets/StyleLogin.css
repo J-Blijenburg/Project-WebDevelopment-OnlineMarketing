@@ -13,5 +13,9 @@ h1{
 
 .btnGuest{
     margin-top: 2.5%;
-    width: 25%;
+}
+
+.wrongLoginMessage{
+    color: red;
+    font-size: 75%;
 }

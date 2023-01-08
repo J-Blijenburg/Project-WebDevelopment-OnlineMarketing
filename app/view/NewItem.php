@@ -106,12 +106,6 @@ $user = unserialize($_SESSION['user']);
 
 
 
-
-
-
-
-
-
                 <div class="input-group mb-3">
                     <span class="input-group-text">Features</span>
                     <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>

@@ -7,15 +7,20 @@ class LoginController{
 
     public function login(){
         $repository = new UserRepository();
-        $users = $repository->getAll();
+        $_SESSION['wrongLogin'] = false;
         
       
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);
+            
+            $users = $repository->getUserByEmail($email);
 
-            foreach ($users as $row) {               
-                if ($row->Email == $email && $row->Password == $password) {
+            foreach ($users as $row) {    
+                
+                
+                
+                if ($row->Email == $email && password_verify($password, $row->Password)) {
                   
                     $user = new User();
                     $user->user_Id = $row->User_Id;
@@ -30,7 +35,7 @@ class LoginController{
                     header("Location: /main");
                 }
             }
-
+            $_SESSION['wrongLogin'] = true;
             
         }
 

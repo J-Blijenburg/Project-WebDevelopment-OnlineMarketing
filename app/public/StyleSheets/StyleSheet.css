@@ -1,8 +1,5 @@
 /* This stylesheet edits the following views: */
 /* ItemInformation.php, Main.php, NewItem.php, Profile.php*/
-
-
-
 .headerInfo {
     display: flex;
     height: 300px;

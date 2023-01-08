@@ -14,20 +14,29 @@
 
 <body class="text-center">
     <h1 class="h3 mb-3 fw-normal">Online-Marketing</h1>
+    <form method='POST'>
+        <div class="btnGuest ">
 
-    <div class="btnGuest ">
+            <input name="firstname" class="form-control" placeholder="Firstname">
+            <input name="lastname" class="form-control mt-3" placeholder="Lastname">
+            <input name="email" class="form-control mt-3" placeholder="Email">
+            <input type="password"  name="password" class="form-control mt-3" placeholder="Password">
 
-        <form method='POST'>
-            <input name="firstname" class="form-control" id="floatingInput" placeholder="Firstname">
-            <input name="lastname" class="form-control mt-3" id="floatingInput" placeholder="Lastname">
-            <input name="email" class="form-control mt-3" id="ds" placeholder="Email">
-            <input name="password" class="form-control mt-3" id="ds" placeholder="Password">       
-            <input type="hidden" name="action" value="submit" />
+            <?php
+            if ($_SESSION['wrongInput'] == true) {
+            ?>
+                <h6 class="wrongLoginMessage mt-3"> The input is not valid. Please, try again.</h6>
+            <?php
+            }
+            ?>
+
             <button name="NewUserBtn" class="w-100 btn btn-lg btn-primary mt-3">Create New User</button>
             <button name="BackBtn" class="w-100 btn btn-lg btn-primary mt-3">Back</button>
-        </form>
-    </div>
 
+
+
+        </div>
+    </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>

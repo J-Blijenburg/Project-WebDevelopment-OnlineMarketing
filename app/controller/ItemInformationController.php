@@ -54,8 +54,7 @@ class ItemInformationController
             else {
                 $_SESSION['validInput'] = true;
             }
-
-           
+            header("Location: /iteminformation");
         }
         //when clicked the user will remove the item
         else if (isset($_POST["btnDeleteItem"])) {
@@ -73,6 +72,7 @@ class ItemInformationController
             $itemDescription = htmlspecialchars($_POST["itemDescription"]);
 
             $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
+            header("Location: /iteminformation");
         }
         //When clicked the user will 'sell' the item to the other user
         else if (isset($_POST["btnSellItem"])) {

@@ -21,6 +21,16 @@ class UserRepository extends Repository
         $users = $stmt->fetchAll();
         return $users;
     }
+    public function getUserByEmail($email){
+        $stmt = $this->connection->prepare("SELECT * FROM Users WHERE Email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        $users = $stmt->fetchAll();
+        return $users;
+    }
+
 
     public function setNewUser($firstName, $lastName, $email, $password)
     {       
