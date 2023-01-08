@@ -1,6 +1,7 @@
 <?php
 require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
+require_once("../repositories/ImageRepository.php");
 session_start();
 
 class ProfileController{
@@ -8,7 +9,7 @@ class ProfileController{
         
 
         $repository = new ItemRepository();
-
+        $imageRepository = new ImageRepository();
 
         //the current user who is logged in
         $user = unserialize($_SESSION['user']);
