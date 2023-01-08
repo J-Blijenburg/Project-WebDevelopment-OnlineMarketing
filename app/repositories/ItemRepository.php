@@ -9,7 +9,7 @@ class ItemRepository extends Repository{
 
     //get every single item there is
     public function getAll(){
-        $stmt = $this->connection->prepare("SELECT IT.Item_Id, IT.Name, IT.Description, IT.Price, IT.Posted_At, IT.Status, IT.User_Id, IT.Category_Id, IT.Features, CA.Name AS CategoryName FROM Items AS IT JOIN Category AS CA  ON IT.Category_Id = CA.Category_Id");
+        $stmt = $this->connection->prepare("SELECT IT.Item_Id, IT.Name, IT.Description, IT.Price, IT.Posted_At, IT.Status, IT.User_Id, IT.Category_Id, IT.Features, CA.Name AS CategoryName FROM Items AS IT JOIN Category AS CA  ON IT.Category_Id = CA.Category_Id ");
         $stmt->execute();
         
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
@@ -31,7 +31,7 @@ class ItemRepository extends Repository{
 
     //get a single item which is selected by the item id
     public function getItemById($itemId){
-        $stmt = $this->connection->prepare("SELECT * FROM Items WHERE Item_Id = :itemId");
+        $stmt = $this->connection->prepare("SELECT *, US.FirstName, US.LastName, US.Email FROM Items AS IT JOIN Users AS US  ON US.User_Id = IT.User_Id  WHERE Item_Id = :itemId ");
         $stmt->bindParam(':itemId', $itemId);
 
         $stmt->execute();

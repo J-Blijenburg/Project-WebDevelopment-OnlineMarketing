@@ -141,7 +141,7 @@
                                             <img class="w-50 mx-auto d-block" style=" width=150" src="<?php echo $dataUri; ?>" alt="Image of item">
                                         </div>
                                     <?php
-                                    $i++;
+                                        $i++;
                                     } else {
                                     ?>
                                         <div class="carousel-item">
@@ -167,34 +167,6 @@
                             </button>
                         </div>
 
-
-
-
-                        <!-- <div id="carouselExampleIndicators" class="carousel slide">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            </div>
-                            <div class="carousel-inner">
-
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div> -->
-
-
-
-
-
-
-
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
                         <h4>Minimum Price: € <?php
                                                 $priceFormat = number_format((float)$row->Price, 2, '.', '');
@@ -202,13 +174,31 @@
                                                 ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
                         <h5 class="pb-2"><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
+
+                        <div class="userInfo">
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Seller info
+                            </button>
+                            <div class="collapse pb-2 w-50" id="collapseExample">
+                                <div class="card card-body">
+                                    <?php
+                                    foreach ($item as $row) {
+                                        echo "$row->FirstName $row->LastName ";
+                                        echo "<br> ------------ <br>";
+                                        echo "$row->Email";
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                        </div>
+
                     <?php
                     }
                 }
                 if ($_SESSION["editItem"] == false) {
                     ?>
                     <form method="POST">
-                        <div class="input-group mb-0">
+                        <div class="input-group mt-4">
                             <span class="input-group-text">€</span>
                             <input name="txtBidPrice" placeholder="e.g. € 0.00,-" type="text" class="form-control">
                             <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) {
