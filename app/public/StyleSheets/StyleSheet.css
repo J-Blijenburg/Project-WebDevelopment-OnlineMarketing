@@ -39,3 +39,7 @@
     background-color: rgb(128, 123, 123);
 }
 
+.invalidInput{
+    color: red;
+    font-size: 75%;
+}

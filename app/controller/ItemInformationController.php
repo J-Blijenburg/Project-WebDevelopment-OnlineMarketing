@@ -87,7 +87,7 @@ class ItemInformationController
             header("Location: /newitem");
         }
 
-
+        
 
 
         require("../view/ItemInformation.php");

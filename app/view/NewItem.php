@@ -59,8 +59,6 @@ $user = unserialize($_SESSION['user']);
 </header>
 
 <body>
-
-
     <main>
         <form method="POST">
             <section class="text-center container">
@@ -69,12 +67,10 @@ $user = unserialize($_SESSION['user']);
                         <h1 class="fw-light">Create a new item</h1>
                     </div>
                 </div>
-
             </section>
         </form>
         <div class="d-flex justify-content-center ">
             <form method="POST" enctype="multipart/form-data">
-
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1">Name of product</span>
                     <input name="ItemName" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
@@ -89,9 +85,11 @@ $user = unserialize($_SESSION['user']);
                     <span class="input-group-text">€</span>
                     <input name="ItemPrice" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
+
                 <div class="input-group  mb-3">
+                <span class="input-group-text" id="basic-addon1">Category</span>
                     <select class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
-                        <option selected>Choose...</option>
+                      
                         <?php
                         foreach ($allCategorys as $row) {
                         ?>
@@ -102,16 +100,10 @@ $user = unserialize($_SESSION['user']);
                     </select>
 
                 </div>
-
-
-
-
                 <div class="input-group mb-3">
                     <span class="input-group-text">Features</span>
                     <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>
                 </div>
-
-
                 <!-- This div is part of the Drag and Drop API -->
                 <div class="input-group mb-3" style="display: flex">
                     <label class="input-group-text" for="ItemUpload">Upload</label>
@@ -121,14 +113,18 @@ $user = unserialize($_SESSION['user']);
                         <input style="position: absolute; font-size: 70%;" name="ItemUpload[]" type="file" multiple id="myFileInput">
                     </div>
                     <div id="myDraggableElement" draggable="true">
-
-
                     </div>
                 </div>
-
         </div>
+        <?php
+        if ($_SESSION['wrongInput'] == true) {
+        ?>
+            <h6 style="display: flex; justify-content:center;" class="invalidInput mt-2"> The input is not valid. Please, try again.</h6>
+        <?php
+        }
+        ?>
 
-        <div class="d-flex justify-content-center flex-grow-3">
+        <div class="d-flex justify-content-center flex-grow-3 mt-3">
 
             <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
 

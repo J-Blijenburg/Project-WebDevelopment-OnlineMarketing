@@ -65,10 +65,10 @@ class ItemRepository extends Repository{
         $query->bindparam(':User_Id', $userId);
         $query->bindParam(':Category_Id', $selectedCategory); 
         $query->bindParam(':Features', $itemFeatures);
-        
+        $query->execute();
 
         $stmt = $this->connection->prepare("SELECT * FROM Items WHERE Item_Id = LAST_INSERT_ID();");
-        $query->execute();
+       
         $stmt->execute();
         
        
