@@ -53,16 +53,13 @@ class NewItemController
         } else if (isset($_POST["ItemCancel"])) {
             header("Location: /profile");
         }
-        //button to see the profile
-        else if (isset($_POST["profileBtn"])) {
-            header("Location: /profile");
-        }
-        //button to logout
-        else if (isset($_POST["LogOutBtn"])) {
-            $_SESSION['loggedin'] = false;
-            header("Location: /main");
-        }
+        
+        
 
+       
+        $baseController =  new BaseController();
+        $baseController->header();
         require("../view/NewItem.php");
+        $baseController->footer();
     }
 }

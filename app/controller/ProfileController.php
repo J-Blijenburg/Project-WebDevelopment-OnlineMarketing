@@ -14,30 +14,18 @@ class ProfileController{
         //the current user who is logged in
         $user = unserialize($_SESSION['user']);
         
-
         $items = $repository->getUserItems($user->user_Id);
 
-        //creats an new item
-        if(isset($_POST["NewItemBtn"])){
-            header("Location: /newitem");
-        }
-        //button to logout
-        else if(isset($_POST["LogOutBtn"])){
-            $_SESSION['loggedin'] = false;
-            header("Location: /main");
-        }
-        else if(isset($_POST["btnMoreInfo"])){
+        if(isset($_POST["btnMoreInfo"])){
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
             header("Location: /iteminformation");
         }
-        else if(isset($_POST["SignUpBtn"])){
-            header("Location: /newuser");
-        }
-        //button to login
-        else if (isset($_POST["LoginBtn"]) ) {
-            header("Location: /login");
-        }
-
+        
+        
+        $baseController =  new BaseController();
+        $baseController->header();
         require("../view/Profile.php");
+        $baseController->footer();
+        
     }
 }

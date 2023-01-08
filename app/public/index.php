@@ -1,5 +1,5 @@
 <?php
-
+require_once("../controller/BaseController.php");
 $url = $_SERVER["REQUEST_URI"];
 
 

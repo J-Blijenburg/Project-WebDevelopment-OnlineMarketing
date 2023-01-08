@@ -26,33 +26,14 @@ class ItemInformationController
         $itemBiddings = $bidRepository->getBiddingById($itemId);
         $itemImages = $imageRepository->getAllImageByItemId($itemId);
 
-       
-
-        //button to login
-        if (isset($_POST["LoginBtn"])) {
-            header("Location: /login");
-        }
-        //button to signup
-        else if (isset($_POST["SignUpBtn"])) {
-            header("Location: /newuser");
-        }
-        //button to logout
-        else if (isset($_POST["LogOutBtn"])) {
-            $_SESSION['loggedin'] = false;
-            header("Location: /iteminformation");
-        }
-        //button to see the profile
-        else if (isset($_POST["profileBtn"])) {
-            header("Location: /profile");
-        }
+        
         //button to place a bid on the item
-        else if (isset($_POST["txtBidPrice"])) {
+        if (isset($_POST["txtBidPrice"])) {
             $bidPrice = htmlspecialchars($_POST["txtBidPrice"]);
-            if(is_numeric($bidPrice)){
+            if (is_numeric($bidPrice)) {
                 $bidRepository->setNewBid($bidPrice, $itemId, $user->user_Id);
                 $_SESSION['validInput'] = false;
-            }
-            else {
+            } else {
                 $_SESSION['validInput'] = true;
             }
             header("Location: /iteminformation");
@@ -82,14 +63,11 @@ class ItemInformationController
 
             header("Location: /profile");
         }
-        //creats an new item
-        else if (isset($_POST["NewItemBtn"])) {
-            header("Location: /newitem");
-        }
+       
 
-        
-
-
+        $baseController =  new BaseController();
+        $baseController->header();
         require("../view/ItemInformation.php");
+        $baseController->footer();
     }
 }
