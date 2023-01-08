@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body class="bg-light">
 
     <header class="p-3 text-bg-dark">
 

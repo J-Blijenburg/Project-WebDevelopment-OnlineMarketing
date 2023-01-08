@@ -97,10 +97,10 @@ class ItemRepository extends Repository{
     public function DeleteItem($itemId)
     {      
          //First delete all the bids which are connected to the item
-         $query = $this->connection->prepare("DELETE FROM Images WHERE Item_Id = :itemId");
+         $query = $this->connection->prepare("DELETE FROM Bids WHERE Item_Id = :itemId");
          $query->bindParam(':itemId', $itemId);
          $query->execute();
-
+         
         //First delete all the bids which are connected to the item
         $query = $this->connection->prepare("DELETE FROM Bids WHERE Item_Id = :itemId");
         $query->bindParam(':itemId', $itemId);

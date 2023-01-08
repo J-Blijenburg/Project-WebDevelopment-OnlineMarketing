@@ -67,12 +67,12 @@
         </div>
 </header>
 
-<body>
-    <div class="content">
-        <main class="container mt-5">
-            <div class="bg-light px-5 pt-4 pb-4 rounded">
+<body class="bg-light">
+    <div class="content ">
+        <main class=" bg-white container mt-5 border">
+            <div class="bg-white pt-4 pb-4 rounded">
                 <?php
-                if ($_SESSION['loggedin'] == true) {
+                if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) {
                 ?>
                     <form method="POST" class="d-flex justify-content-end pb-3">
                         <div class="btn-group">
@@ -111,14 +111,14 @@
                                         if ($i == 0) {
                                     ?>
                                             <div class="carousel-item active">
-                                                <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                                <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
                                             </div>
                                         <?php
                                             $i++;
                                         } else {
                                         ?>
                                             <div class="carousel-item">
-                                                <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                                <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
                                             </div>
                                         <?php
                                         }
@@ -172,14 +172,14 @@
                                     if ($i == 0) {
                                 ?>
                                         <div class="carousel-item active">
-                                            <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                            <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
                                         </div>
                                     <?php
                                         $i++;
                                     } else {
                                     ?>
                                         <div class="carousel-item">
-                                            <img class="w-50 mx-auto d-block" width = "500" height = "500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                            <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
                                         </div>
                                     <?php
                                     }
@@ -235,7 +235,7 @@
                         <div class="input-group mt-4">
                             <span class="input-group-text">€</span>
                             <input name="txtBidPrice" placeholder="e.g. € 0.00,-" type="text" class="form-control">
-                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false) { ?> disabled <?php } ?>>Place bid </button>
+                            <button id="btnBidId" name="btnBid" class="btn btn-outline-secondary btn-lg" <?php if ($_SESSION['loggedin'] == false || ($item[0]->User_Id == $user->user_Id)) { ?> disabled <?php } ?>>Place bid </button>
                         </div>
                         <?php
                         if ($_SESSION["validInput"] == true) {
@@ -260,7 +260,12 @@
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Date&Time</th>
-                            <th scope="col">Sell Item</th>
+                            <?php if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) { ?>
+                                <th scope="col">Sell Item</th>
+
+
+                            <?php } ?>
+
                         </tr>
                     </thead>
 
@@ -283,9 +288,14 @@
                                     $datetimeFormat = date("j M o - H:i", $time);
 
                                     echo $datetimeFormat ?></td>
-                                <form id="sellButtonId" method="POST">
-                                    <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
-                                </form>
+                                <?php if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) { ?>
+                                    <form id="sellButtonId" method="POST">
+                                        <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
+                                    </form>
+
+
+                                <?php } ?>
+
                             </tr>
 
                         <?php

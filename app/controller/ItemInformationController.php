@@ -26,6 +26,7 @@ class ItemInformationController
         $itemBiddings = $bidRepository->getBiddingById($itemId);
         $itemImages = $imageRepository->getAllImageByItemId($itemId);
 
+       
 
         //button to login
         if (isset($_POST["LoginBtn"])) {
