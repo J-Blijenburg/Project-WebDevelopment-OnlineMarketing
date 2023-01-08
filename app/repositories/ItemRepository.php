@@ -19,7 +19,7 @@ class ItemRepository extends Repository{
 
     //get every item from the selected user/current user
     public function getUserItems($userId){
-        $stmt = $this->connection->prepare("SELECT * FROM Items WHERE User_Id = :userId");
+        $stmt = $this->connection->prepare("SELECT IT.Item_Id, IT.Name, IT.Description, IT.Price, IT.Posted_At, IT.User_Id, IT.Category_Id, IT.Features, CA.Name AS CategoryName FROM Items AS IT JOIN Category AS CA  ON IT.Category_Id = CA.Category_Id  WHERE User_Id = :userId");
         $stmt->bindParam(':userId', $userId);
 
         $stmt->execute();

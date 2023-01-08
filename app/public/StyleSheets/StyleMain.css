@@ -1,0 +1,17 @@
+
+.headerInfo {
+    display: flex;
+    height: 300px;
+    z-index: 1;
+    position: absolute;
+}
+
+/* Size for mobile version */
+@media (max-width:480px){
+    .imageHeader {
+        height: 150px;
+    }
+
+    
+
+}

@@ -6,25 +6,22 @@ session_start();
 
 class ProfileController{
     public function profile(){
-        
-
         $repository = new ItemRepository();
         $imageRepository = new ImageRepository();
 
-        //the current user who is logged in
-        $user = unserialize($_SESSION['user']);
-        
-        $items = $repository->getUserItems($user->user_Id);
-
-        if(isset($_POST["btnMoreInfo"])){
+        $_SESSION['controller'] = "Profile";
+            
+        //button to get more info about the item
+        if (isset($_POST["btnMoreInfo"])) {
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
             header("Location: /iteminformation");
         }
         
-        
+        //The html page consist of multiple view. This is done to prevent duplicated code.
         $baseController =  new BaseController();
         $baseController->header();
         require("../view/Profile.php");
+        $baseController->ItemList();
         $baseController->footer();
         
     }
