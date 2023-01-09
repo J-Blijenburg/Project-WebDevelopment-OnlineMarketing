@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
  <link href="StyleSheets/StyleItemList.css" rel="stylesheet" />
 
 <body>
@@ -10,7 +11,7 @@
                     foreach ($items as $row) {
                      
                     ?>
-                        <div class="card mx-auto p-0 mt-5" style="height:420px; width: 30%">
+                        <div class="card mx-auto p-0 mt-5" style="height:420px; ">
                     
                             <?php
                           

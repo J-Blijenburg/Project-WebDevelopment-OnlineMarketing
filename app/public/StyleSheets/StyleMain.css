@@ -8,10 +8,25 @@
 
 /* Size for mobile version */
 @media (max-width:480px){
-    .imageHeader {
+    .headerInfo{
         height: 150px;
     }
 
     
+
+}
+
+
+/* Size for mobile version */
+@media screen and ((min-width:481px) and (max-width:720px)) {
+    
+
+    
+
+}
+
+/* Size for laptop version */
+@media screen and (min-width:721px) {
+ 
 
 }

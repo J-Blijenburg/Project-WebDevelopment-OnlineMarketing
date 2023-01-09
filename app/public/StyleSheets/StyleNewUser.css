@@ -1,5 +1,5 @@
-h1{
-    color: Black;
+.newUserText{
+    color: blue;
 }
 .text-center{
     display: flex;
@@ -8,11 +8,53 @@ h1{
     margin-top: 2.5%;
 }
 
-.btnGuest{
-    margin-top: 2.5%;
-}
-
 .wrongLoginMessage{
     color: red;
     font-size: 75%;
+}
+
+/* Size for mobile version */
+@media screen and (max-width:480px) {
+    .newUserText {
+        font-size: 300%;
+        margin-top: 5%;
+    }
+
+    .btnGuest {
+        margin-top: 5%;
+        width: 70%;
+    }
+
+    
+}
+
+
+/* Size for mobile version */
+@media screen and ((min-width:481px) and (max-width:720px)) {
+    .newUserText {
+        font-size: 400%;
+        margin-top: 5%;
+    }
+
+    .btnGuest {
+        margin-top: 5%;
+        width: 50%;
+    }
+
+    
+
+}
+
+/* Size for laptop version */
+@media screen and (min-width:721px) {
+    .newUserText {
+        font-size: 400%;
+        margin-top: 5%;
+    }
+
+    .btnGuest {
+        margin-top: 5%;
+        width: 30%;
+    }
+
 }

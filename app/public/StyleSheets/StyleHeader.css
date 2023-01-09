@@ -1,12 +1,31 @@
 /* Size for mobile version */
 @media (max-width:480px){
-   .newItem{
-    width: 50px;
-    height: 50px;
-    font-size: 80%;
-   }
-   .headerBtn{
-        box-sizing: unset;
-   }
+  .header{
+   display: flex;
+   justify-content: space-between;
+  }
+  
+   .HeaderText{
+   display: none;
+  }
+
+  .headerButtons{
+   display: flex;
+   gap: 30px;
+  }
+
+}
+
+/* Size for mobile version */
+@media screen and ((min-width:481px) and (max-width:720px)) {
+    
+
+    
+
+}
+
+/* Size for laptop version */
+@media screen and (min-width:721px) {
+ 
 
 }
