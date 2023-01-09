@@ -17,7 +17,32 @@
 }
 
 /* Size for mobile version */
-@media screen and ((min-width:481px) and (max-width:720px)) {
+@media ((min-width:481px) and  (max-width:580px)) {
+   .header {
+      display: flex;
+      justify-content: space-between;
+   }
+
+   .HeaderText {
+      display: none;
+   }
+
+   .HeaderLogoInfo{
+      display: flex;
+      gap: 20px;
+   }
+
+   
+   .headerButtons {
+      display: flex;
+      gap: 30px;
+   }
+
+
+}
+
+/* Size for mobile version */
+@media screen and ((min-width:581px) and (max-width:720px)) {
    .header {
       display: flex;
       justify-content: space-between;
@@ -51,7 +76,7 @@
    .header {
       display: flex;
       justify-content: space-around;
-      gap:30%
+      gap:20%
    }
 
    .HeaderText {

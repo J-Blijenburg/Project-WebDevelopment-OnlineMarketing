@@ -1,6 +1,6 @@
 .headerInfo {
     display: flex;
-    height: 300px;
+    height: 250px;
     z-index: 1;
     position: absolute;
 }
@@ -9,6 +9,12 @@
 @media (max-width:480px) {
     .headerInfo {
         height: 150px;
+        justify-content: center;
+    }
+
+    .mainSearchItems{
+        display: flex;
+        flex-direction: column;
         justify-content: center;
     }
 
@@ -22,14 +28,7 @@
         justify-content: center;
     }
 
-    .mainSearchItems {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80%;
-        gap: 20px;
-    }
-
+   
     .mainHeaderText{
         display: flex;
         justify-content: center;
@@ -44,10 +43,20 @@
 /* Size for mobile version */
 @media screen and ((min-width:481px) and (max-width:720px)) {
     .headerInfo {
-        height: 60%;
+        height: 150px;
         justify-content: center;
     }
 
+   
+    .headerInfo {
+        justify-content: center;
+    }
+
+    .mainSearchItems{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
     .mainComponents {
         display: flex;
         justify-content: center;
@@ -58,14 +67,7 @@
         justify-content: center;
     }
 
-    .mainSearchItems {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 80%;
-        height: 350px;
-        gap: 20px;
-    }
+   
 
     .mainHeaderText{
         display: flex;
@@ -73,15 +75,20 @@
     }
 
     .imageHeader{
-        height: 250px;
+        height: 175px;
     }
 }
 
 /* Size for laptop version */
 @media screen and (min-width:721px) {
     .headerInfo {
-        height: 60%;
         justify-content: center;
+    }
+    .mainSearchItems{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
     }
 
     .mainComponents {
@@ -94,14 +101,7 @@
         justify-content: center;
     }
 
-    .mainSearchItems {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 60%;
-        height: 300px;
-        gap: 20px;
-    }
+   
 
     .mainHeaderText{
         display: flex;

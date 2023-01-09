@@ -20,7 +20,7 @@ class ProfileController{
         //The html page consist of multiple view. This is done to prevent duplicated code.
         $baseController =  new BaseController();
         $baseController->header();
-        require("../view/Profile.php");
+        require("../view/Main.php");
         $baseController->ItemList();
         $baseController->footer();
         
