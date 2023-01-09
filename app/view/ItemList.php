@@ -1,12 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online-Marketing</title>
-    <link href="StyleSheets/StyleItemList.css" rel="stylesheet" />
-</head>
+ <link href="StyleSheets/StyleItemList.css" rel="stylesheet" />
+
 <body>
      <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
      <div class="album  bg-light pb-5">

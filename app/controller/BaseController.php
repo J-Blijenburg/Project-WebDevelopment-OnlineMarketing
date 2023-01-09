@@ -43,8 +43,9 @@ class BaseController
     public function ItemList()
     {
         //the current user who is logged in
-        $user = unserialize($_SESSION['user']);
-
+        if (isset($_SESSION['user'])) {
+            $user = unserialize($_SESSION['user']);
+        }
         $imageRepository = new ImageRepository();
         $repository = new ItemRepository();
 
