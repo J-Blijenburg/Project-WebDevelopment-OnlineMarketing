@@ -1,12 +1,33 @@
 /* Size for mobile version */
 @media screen and (max-width:480px) {
-   
-    
     .card{
-        flex-basis:45%;
-       
+        flex-basis:40%;
     }
+   
+
+    
 
     
 }
 
+/* Size for tablet version */
+@media screen and ((min-width:481px) and (max-width:720px)) {
+    .card{
+        flex-basis:35%;
+    }
+
+    
+
+}
+
+/* Size for laptop version */
+@media screen and (min-width:721px) {
+    .card{
+        flex-basis:25%;
+    }
+
+    .row{
+        gap: 2.5%;
+    }
+
+}

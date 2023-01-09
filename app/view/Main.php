@@ -5,6 +5,7 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Online-Marketing</title>
     <link href="StyleSheets/StyleMain.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9">
@@ -14,40 +15,37 @@
 
 <body class="bg-light">
     <main>
-        <div class="headerInfo" style="width: 100%">
-            <section class="text-center container ">
-                <form method="POST">
-                    <div class="row py-lg-5 w-65 position-absolute top-50 start-50 translate-middle">
-                        <h1 class="fw-light">Online-Marketing</h1>
-                        <p class="badge rounded-pill text-bg-primary">Use the searchbar and category function to optimize your search result</p>
-                        <div class="input-group">
-                            <input class="form-control form-control-dark w-50" id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItems()">
-                            <select oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
-                                <option selected>Choose...</option>
-                                <?php
-                                foreach ($allCategorys as $row) {
-                                ?>
-                                    <option value="<?php echo $row->Name ?>"><?php echo $row->Name ?></option>
-                                <?php
-                                }
-                                ?>
-                            </select>
-                            <button name="RefreshBtn" class="btn btn-warning">Refresh</button>
-                        </div>
+        <div class=mainComponents>
+            <div class="headerInfo" style="width: 100%">
+
+                <form class="mainSearchItems" method="POST">
+                    <h1 class="mainHeaderText">Online-Marketing</h1>
+                    <div class="input-group">
+                        <input class="form-control form-control-dark w-50" id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItems()">
+                        <select oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
+                            <option selected>Choose...</option>
+                            <?php
+                            foreach ($allCategorys as $row) {
+                            ?>
+                                <option value="<?php echo $row->Name ?>"><?php echo $row->Name ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                        <button name="RefreshBtn" class="btn btn-warning">Refresh</button>
                     </div>
                 </form>
-            </section>
+            </div>
+            <img class="imageHeader" src=Img/Background.jpeg style="width: 100%">
         </div>
-        <img class=imageHeader src=Img/Background.jpeg style="width: 100%">
 
-       
 
 
 
 
 
     </main>
-   
+
 
 
 

@@ -1,4 +1,3 @@
-
 .headerInfo {
     display: flex;
     height: 300px;
@@ -7,26 +6,108 @@
 }
 
 /* Size for mobile version */
-@media (max-width:480px){
-    .headerInfo{
+@media (max-width:480px) {
+    .headerInfo {
         height: 150px;
+        justify-content: center;
     }
 
-    
+    .mainComponents {
+        display: flex;
+        justify-content: center;
+    }
 
+    .text-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mainSearchItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        gap: 20px;
+    }
+
+    .mainHeaderText{
+        display: flex;
+        justify-content: center;
+    }
+
+    .imageHeader{
+        height: 150px;
+    }
 }
 
 
 /* Size for mobile version */
 @media screen and ((min-width:481px) and (max-width:720px)) {
-    
+    .headerInfo {
+        height: 60%;
+        justify-content: center;
+    }
 
-    
+    .mainComponents {
+        display: flex;
+        justify-content: center;
+    }
 
+    .text-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mainSearchItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        height: 75%;
+        gap: 20px;
+    }
+
+    .mainHeaderText{
+        display: flex;
+        justify-content: center;
+    }
+
+    .imageHeader{
+        height: 250px;
+    }
 }
 
 /* Size for laptop version */
 @media screen and (min-width:721px) {
- 
+    .headerInfo {
+        height: 60%;
+        justify-content: center;
+    }
 
+    .mainComponents {
+        display: flex;
+        justify-content: center;
+    }
+
+    .text-center {
+        display: flex;
+        justify-content: center;
+    }
+
+    .mainSearchItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+        height: 75%;
+        gap: 20px;
+    }
+
+    .mainHeaderText{
+        display: flex;
+        justify-content: center;
+    }
+    .imageHeader{
+        height: 300px;
+    }
 }
