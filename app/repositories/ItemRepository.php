@@ -52,9 +52,7 @@ class ItemRepository extends Repository{
         return $item;
     }
 
-
-
-    //create a new item
+    //create a new item and return the just made item
     public function getAndSetNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $userId, $itemFeatures)
     {       
         $query = $this->connection->prepare("INSERT INTO Items (Name, Description, Price, Posted_At, User_Id, Category_Id, Features) VALUES 
@@ -68,10 +66,8 @@ class ItemRepository extends Repository{
         $query->execute();
 
         $stmt = $this->connection->prepare("SELECT * FROM Items WHERE Item_Id = LAST_INSERT_ID();");
-       
         $stmt->execute();
         
-       
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
         $item = $stmt->fetchAll();
         return $item;
@@ -96,21 +92,19 @@ class ItemRepository extends Repository{
     //Delete the selected item by itemid
     public function DeleteItem($itemId)
     {      
-         //First delete all the bids which are connected to the item
-         $query = $this->connection->prepare("DELETE FROM Bids WHERE Item_Id = :itemId");
+         //First delete all the images which are connected to the item
+         $query = $this->connection->prepare("DELETE FROM Images WHERE Item_Id = :itemId");
          $query->bindParam(':itemId', $itemId);
          $query->execute();
          
-        //First delete all the bids which are connected to the item
+        //Second delete all the bids which are connected to the item
         $query = $this->connection->prepare("DELETE FROM Bids WHERE Item_Id = :itemId");
         $query->bindParam(':itemId', $itemId);
         $query->execute();
         
-        //Second delete the selected item given by its itemId
+        //Third delete the selected item given by its itemId
         $query = $this->connection->prepare("DELETE FROM Items WHERE Item_Id = :itemId");
         $query->bindParam(':itemId', $itemId);
         $query->execute();
-    }
-
-    
+    } 
 }

@@ -1,4 +1,5 @@
 <?php
+//The basecontroller will display the base of most pages
 require_once("../controller/BaseController.php");
 $url = $_SERVER["REQUEST_URI"];
 

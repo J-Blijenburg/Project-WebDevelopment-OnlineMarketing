@@ -9,7 +9,6 @@
     <title>Online-Marketing</title>
     <link href="StyleSheets/StyleMain.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
@@ -17,12 +16,11 @@
     <main>
         <div class=mainComponents>
             <div class="headerInfo" style="width: 100%">
-
                 <form class="mainSearchItems" method="POST">
                     <h1 class="mainHeaderText">Online-Marketing</h1>
                     <div class="input-group">
-                        <input class="form-control form-control-dark w-50" id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItems()">
-                        <select oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
+                        <input class="form-control form-control-dark w-50" id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItemsTextfield()">
+                        <select oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory">
                             <option selected>Choose...</option>
                             <?php
                             foreach ($allCategorys as $row) {
@@ -38,22 +36,9 @@
             </div>
             <img class="imageHeader" src=Img/Background.jpeg style="width: 100%">
         </div>
-
-
-
-
-
-
     </main>
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SearchFunction.js"></script>
-
 </body>
-
-
 
 </html>

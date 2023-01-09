@@ -1,5 +1,4 @@
 <?php
-
 class Item{
     public int $itemId;
     public string $name;
@@ -11,5 +10,4 @@ class Item{
     public Category $category;
     public string $features;
 }
-
 ?>

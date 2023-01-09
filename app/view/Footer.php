@@ -1,8 +1,3 @@
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="StyleSheets/StyleFooter.css" rel="stylesheet" />
-</head>
-
 <body>
     <div class="container">
         <footer class="py-3 my-4 ">
@@ -17,4 +12,3 @@
         </footer>
     </div>
 </body>
-</html>

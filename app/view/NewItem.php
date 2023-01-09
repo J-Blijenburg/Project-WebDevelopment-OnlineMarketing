@@ -5,7 +5,6 @@ $user = unserialize($_SESSION['user']);
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online-Marketing</title>
@@ -31,7 +30,6 @@ $user = unserialize($_SESSION['user']);
                     <span class="input-group-text" id="basic-addon1">Name of product</span>
                     <input name="ItemName" type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-
                 <div class="input-group mb-3">
                     <span class="input-group-text">Description</span>
                     <textarea name="ItemDescription" class="form-control" aria-label="With textarea"></textarea>
@@ -41,7 +39,6 @@ $user = unserialize($_SESSION['user']);
                     <span class="input-group-text">€</span>
                     <input name="ItemPrice" type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                 </div>
-
                 <div class="input-group  mb-3">
                     <span class="input-group-text" id="basic-addon1">Category</span>
                     <select class="form-select" name="inputCategory" id="inputCategory" aria-label="Example select with button addon">
@@ -62,13 +59,11 @@ $user = unserialize($_SESSION['user']);
                 <!-- This div is part of the Drag and Drop API -->
                 <div class="input-group mb-3" style="display: flex">
                     <label class="input-group-text" for="ItemUpload">Upload</label>
-
                     <!-- https://www.youtube.com/watch?v=OHTudicK7nY -->
                     <div class="drop-zone" style="border-color: black; flex-grow: 1;">
                         <input style="position: absolute; font-size: 70%;" name="ItemUpload[]" type="file" multiple id="myFileInput">
                     </div>
-                    <div id="myDraggableElement" draggable="true">
-                    </div>
+                    <div id="dragImage" draggable="true"></div>
                 </div>
         </div>
         <?php
@@ -78,11 +73,8 @@ $user = unserialize($_SESSION['user']);
         <?php
         }
         ?>
-
         <div class="d-flex justify-content-center flex-grow-3 mt-3">
-
             <div class="btn-group btn-group-lg" role="group" aria-label="Large button group">
-
                 <button name="ItemCancel" class="btn btn-outline-dark">Cancel</button>
                 <button name="ItemCreate" class="btn btn-outline-dark">Create Item</button>
             </div>
@@ -91,7 +83,6 @@ $user = unserialize($_SESSION['user']);
     </main>
     <script src="javascript/DragDropAPI.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

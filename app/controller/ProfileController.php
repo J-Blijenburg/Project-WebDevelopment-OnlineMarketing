@@ -6,17 +6,10 @@ session_start();
 
 class ProfileController{
     public function profile(){
-        $repository = new ItemRepository();
-        $imageRepository = new ImageRepository();
-
+        //the profile page only makes sure that the right list of items is selected 
+        //I have kept the page so i always can edit the page if needed.
         $_SESSION['controller'] = "Profile";
-            
-        //button to get more info about the item
-        if (isset($_POST["btnMoreInfo"])) {
-            $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
-            header("Location: /iteminformation");
-        }
-        
+               
         //The html page consist of multiple view. This is done to prevent duplicated code.
         $baseController =  new BaseController();
         $baseController->header();

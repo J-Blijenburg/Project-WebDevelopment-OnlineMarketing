@@ -13,15 +13,19 @@ class ItemInformationController
         //When opening the information page always make sure it doesnt start in 'edit mode'
         $_SESSION['editItem'] = false;
         $_SESSION['validInput'] = false;
+        
         //the current user who is logged in
         if (isset($_SESSION['user'])) {
             $user = unserialize($_SESSION['user']);
         }
+        //Get every needed repository
         $itemRepository = new ItemRepository();
-        $userRepository = new UserRepository();
         $bidRepository = new BidRepository();
         $imageRepository = new ImageRepository();
+        
+        //When going from the itemlist page this session will receive the selected item ID.
         $itemId = $_SESSION['selectedItem'];
+
         $item = $itemRepository->getItemById($itemId);
         $itemBiddings = $bidRepository->getBiddingById($itemId);
         $itemImages = $imageRepository->getAllImageByItemId($itemId);

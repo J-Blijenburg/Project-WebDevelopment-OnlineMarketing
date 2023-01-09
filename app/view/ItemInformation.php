@@ -2,13 +2,11 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Online-Marketing</title>
     <link href="StyleSheets/StyleItemInformation.css" rel="stylesheet" />
     <meta name="theme-color" content="#712cf9">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body class="bg-light">
@@ -33,16 +31,14 @@
                                 </svg>
                                 <span class="visually-hidden">Button</span>
                             </button>
-
                         </div>
                     </form>
                 <?php
                 }
-                ?>
+                ?>               
                 <?php
                 if ($_SESSION['editItem'] == true) {
                     foreach ($item as $row) {
-
                 ?>
                         <form method="POST">
                             <div id="carouselExample " class="carousel slide">
@@ -51,7 +47,6 @@
                                     $i = 0;
                                     foreach ($itemImages as $rowImages) {
                                         $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($rowImages->Image);
-
                                         if ($i == 0) {
                                     ?>
                                             <div class="carousel-item active">
@@ -93,23 +88,19 @@
                                 <span class="input-group-text">Description</span>
                                 <textarea name="itemDescription" class="form-control"><?php echo $row->Description ?></textarea>
                             </div>
-
                             <button name="btnSaveItem" class="btn btn-outline-secondary btn-lg">Save Item</button>
                         </form>
                     <?php
                     }
                 } else {
-
                     foreach ($item as $row) {
                     ?>
-
                         <div id="carouselExample" class="carousel slide">
                             <div class="carousel-inner">
                                 <?php
                                 $i = 0;
                                 foreach ($itemImages as $rowImages) {
                                     $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($rowImages->Image);
-
                                     if ($i == 0) {
                                 ?>
                                         <div class="carousel-item active">
@@ -125,9 +116,6 @@
                                     <?php
                                     }
                                     ?>
-
-
-
                                 <?php
                                 }
                                 ?>
@@ -141,7 +129,6 @@
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
-
                         <h1 class="mt-3"><?php echo $row->Name ?></h1>
                         <h4>Minimum Price: € <?php
                                                 $priceFormat = number_format((float)$row->Price, 2, '.', '');
@@ -149,7 +136,6 @@
                                                 ?>,-</h4>
                         <p class="lead"><?php echo $row->Description ?></p>
                         <h5 class="pb-2"><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
-
                         <div class="userInfo">
                             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                 Seller info
@@ -166,7 +152,6 @@
                                 </div>
                             </div>
                         </div>
-
                     <?php
                     }
                 }
@@ -215,7 +200,6 @@
                                 <td><?php echo $row->FirstName ?></td>
                                 <td id="price"><?php
                                                 $priceFormat = number_format((float)$row->Price, 2, '.', '');
-
                                                 echo "€ $priceFormat,-"
                                                 ?>
                                 </td>
@@ -223,23 +207,17 @@
                                 <td><?php
                                     $time = strtotime($row->Date);
                                     $datetimeFormat = date("j M o - H:i", $time);
-
                                     echo $datetimeFormat ?></td>
                                 <?php if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) { ?>
                                     <form id="sellButtonId" method="POST">
                                         <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
                                     </form>
-
-
                                 <?php } ?>
-
                             </tr>
-
                         <?php
                         }
                         ?>
                     </tbody>
-
                 </table>
             </div>
         </main>

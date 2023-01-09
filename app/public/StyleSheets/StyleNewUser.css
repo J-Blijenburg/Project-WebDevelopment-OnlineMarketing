@@ -1,14 +1,15 @@
-.newUserText{
+.newUserText {
     color: blue;
 }
-.text-center{
+
+.text-center {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 2.5%;
 }
 
-.wrongLoginMessage{
+.wrongLoginMessage {
     color: red;
     font-size: 75%;
 }
@@ -24,8 +25,6 @@
         margin-top: 5%;
         width: 70%;
     }
-
-    
 }
 
 
@@ -40,9 +39,6 @@
         margin-top: 5%;
         width: 50%;
     }
-
-    
-
 }
 
 /* Size for laptop version */
@@ -56,5 +52,4 @@
         margin-top: 5%;
         width: 30%;
     }
-
 }

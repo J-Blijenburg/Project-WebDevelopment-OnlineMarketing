@@ -3,6 +3,7 @@ require_once("../model/User.php");
 require_once("../repositories/Repository.php");
 class UserRepository extends Repository
 {
+    //get all the users from the database
     public function getAll()
     {
         $stmt = $this->connection->prepare("SELECT * FROM Users");
@@ -12,7 +13,8 @@ class UserRepository extends Repository
         $users = $stmt->fetchAll();
         return $users;
     }
-    public function getUser($userId){
+    //get a single user by using a userId
+    public function getUserById($userId){
         $stmt = $this->connection->prepare("SELECT * FROM Users WHERE User_Id = :userId");
         $stmt->bindParam(':userId', $userId);
         $stmt->execute();
@@ -21,6 +23,8 @@ class UserRepository extends Repository
         $users = $stmt->fetchAll();
         return $users;
     }
+
+    //get a single user by email
     public function getUserByEmail($email){
         $stmt = $this->connection->prepare("SELECT * FROM Users WHERE Email = :email");
         $stmt->bindParam(':email', $email);
@@ -31,7 +35,7 @@ class UserRepository extends Repository
         return $users;
     }
 
-
+    //create a new user
     public function setNewUser($firstName, $lastName, $email, $password)
     {       
         $query = $this->connection->prepare("INSERT INTO Users

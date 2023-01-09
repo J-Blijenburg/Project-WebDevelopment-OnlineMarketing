@@ -8,17 +8,18 @@ class MainController
 {
     public function main()
     {
-        //set the needed session value to false. This only apply's the first time
+        //set the needed session value to false. This only apply's the first time the application starts
         if (!isset($_SESSION['loggedin'])) {
             $_SESSION['loggedin'] = false;
         }
 
-        $repository = new ItemRepository();
-
+        //get the needed repository to load the page
         $categoryRepository = new CategoryRepository();
-
+        
+        //get every category there is from the database
         $allCategorys = $categoryRepository->getAllCategory();
 
+        //Session controller make sure that the right itemlist will be displayed
         $_SESSION['controller'] = "Main";
 
         //button to refresh the search engine

@@ -1,49 +1,35 @@
-// function allowDrop(ev) {
-//     ev.preventDefault();
-//   }
-  
-//   function drag(ev) {
-//     ev.dataTransfer.setData("text", ev.target.id);
-//   }
-  
-//   function drop(ev) {
-//     ev.preventDefault();
-//     var data = ev.dataTransfer.getData("text");
-//     ev.target.appendChild(document.getElementById(data));
-//   }
+// <!-- https://www.youtube.com/watch?v=OHTudicK7nY -->
+//Use a Div to create an draggable element
+const dragImage = document.querySelector("#dragImage");
 
-//   function drag_drop(event){
-//     alert(event.dataTransfer.files[0].name);
-//   }
-
-const draggableElement = document.querySelector("#myDraggableElement");
-
-draggableElement.addEventListener("dragstart", e => {
-    e.dataTransfer.setData("text/plain", draggableElement.id);
+//The item which is dragged will be transformed into an text file
+dragImage.addEventListener("dragstart", e => {
+    e.dataTransfer.setData("text/plain", dragImage.id);
 });
 
-for(const dropZone of document.querySelectorAll(".drop-zone")){
- dropZone.addEventListener("dragover", e =>{
+//When an imaged is dragged into the zone the opacity will decrease a little bit
+for(const droppedImage of document.querySelectorAll(".drop-zone")){
+    droppedImage.addEventListener("dragover", e =>{
     e.preventDefault();
-    dropZone.classList.add("drop-zone--over");
+    droppedImage.classList.add("drop-zone--over");
  });
 
-dropZone.addEventListener("dragleave", e => {
-    dropZone.classList.remove("drop-zone--over");
-})
+ //if the dragged image is removed from the zone the opacity will return to its original state
+ droppedImage.addEventListener("dragleave", e => {
+    droppedImage.classList.remove("drop-zone--over");
+})}
 
- dropZone.addEventListener("drop", e => {
+//this event listener will make sure that the dragged image can be dropped into an input field
+//it will get the input value id from the html page and place the text data into an element
+//this text data can later be picked up as an file
+droppedImage.addEventListener("drop", e => {
     e.preventDefault();
 
     document.getElementById("myFileInput").files = e.dataTransfer.files;
 
-    console.log(e.dataTransfer.files);
-
     const droppedElementId = e.dataTransfer.getData("text/plain");
     const droppedElement = document.getElementById(droppedElementId);
 
-    dropZone.appendChild(droppedElement);
-    console.log(droppedElementId);
-    dropZone.classList.remove("drop-zone--over");
- })
-};
+    droppedImage.appendChild(droppedElement);
+    droppedImage.classList.remove("drop-zone--over");
+ });

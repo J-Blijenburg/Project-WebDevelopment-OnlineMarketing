@@ -12,7 +12,7 @@
         justify-content: center;
     }
 
-    .mainSearchItems{
+    .mainSearchItems {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -28,13 +28,13 @@
         justify-content: center;
     }
 
-   
-    .mainHeaderText{
+
+    .mainHeaderText {
         display: flex;
         justify-content: center;
     }
 
-    .imageHeader{
+    .imageHeader {
         height: 150px;
     }
 }
@@ -47,16 +47,17 @@
         justify-content: center;
     }
 
-   
+
     .headerInfo {
         justify-content: center;
     }
 
-    .mainSearchItems{
+    .mainSearchItems {
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
+
     .mainComponents {
         display: flex;
         justify-content: center;
@@ -67,14 +68,12 @@
         justify-content: center;
     }
 
-   
-
-    .mainHeaderText{
+    .mainHeaderText {
         display: flex;
         justify-content: center;
     }
 
-    .imageHeader{
+    .imageHeader {
         height: 175px;
     }
 }
@@ -84,7 +83,8 @@
     .headerInfo {
         justify-content: center;
     }
-    .mainSearchItems{
+
+    .mainSearchItems {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -101,13 +101,12 @@
         justify-content: center;
     }
 
-   
-
-    .mainHeaderText{
+    .mainHeaderText {
         display: flex;
         justify-content: center;
     }
-    .imageHeader{
+
+    .imageHeader {
         height: 300px;
     }
 }

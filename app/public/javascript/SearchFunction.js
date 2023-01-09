@@ -1,4 +1,5 @@
 //https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards
+//loop through every single character and display the card which contains one of these characters
 function searchThroughItemsCategory() {
   var input = document.getElementById("inputCategory");
   var filter = input.value.toUpperCase();
@@ -14,7 +15,11 @@ function searchThroughItemsCategory() {
     }
   }
 }
-function searchThroughItems() {
+
+//The first one is for the category search and the second one is for the searchbar
+//Since this was the best way to show the search function i had to use 2 methods
+
+function searchThroughItemsTextfield() {
   var input = document.getElementById("myInput");
   var filter = input.value.toUpperCase();
   var cards = document.getElementsByClassName("card")
@@ -29,3 +34,5 @@ function searchThroughItems() {
     }
   }
 }
+
+

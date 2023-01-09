@@ -57,8 +57,6 @@ class BaseController
             $items = $repository->getAll();
         }
 
-       
-
         require("../view/ItemList.php");
     }
 }

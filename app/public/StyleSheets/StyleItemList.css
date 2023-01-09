@@ -3,11 +3,6 @@
     .card{
         flex-basis:40%;
     }
-   
-
-    
-
-    
 }
 
 /* Size for tablet version */
@@ -15,9 +10,6 @@
     .card{
         flex-basis:35%;
     }
-
-    
-
 }
 
 /* Size for laptop version */
@@ -29,5 +21,4 @@
     .row{
         gap: 2.5%;
     }
-
 }

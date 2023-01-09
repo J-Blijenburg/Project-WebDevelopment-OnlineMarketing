@@ -17,7 +17,7 @@
 }
 
 /* Size for mobile version */
-@media ((min-width:481px) and  (max-width:580px)) {
+@media ((min-width:481px) and (max-width:580px)) {
    .header {
       display: flex;
       justify-content: space-between;
@@ -27,18 +27,15 @@
       display: none;
    }
 
-   .HeaderLogoInfo{
+   .HeaderLogoInfo {
       display: flex;
       gap: 20px;
    }
 
-   
    .headerButtons {
       display: flex;
       gap: 30px;
    }
-
-
 }
 
 /* Size for mobile version */
@@ -56,19 +53,16 @@
       font-size: 150%;
    }
 
-
-   .HeaderLogoInfo{
+   .HeaderLogoInfo {
       display: flex;
       gap: 20px;
    }
 
-   
+
    .headerButtons {
       display: flex;
       gap: 30px;
    }
-
-
 }
 
 /* Size for laptop version */
@@ -76,7 +70,7 @@
    .header {
       display: flex;
       justify-content: space-around;
-      gap:20%
+      gap: 20%
    }
 
    .HeaderText {
@@ -88,12 +82,12 @@
    }
 
 
-   .HeaderLogoInfo{
+   .HeaderLogoInfo {
       display: flex;
       gap: 20px;
    }
 
-   
+
    .headerButtons {
       display: flex;
       gap: 30px;

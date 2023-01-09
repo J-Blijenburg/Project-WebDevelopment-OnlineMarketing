@@ -14,7 +14,7 @@ class BidRepository extends Repository
         $item = $stmt->fetchAll();
         return $item;
     }
-    //create a new item
+    //Place a new bid on a specifik item
     public function setNewBid($price, $itemId, $userId)
     {
         $query = $this->connection->prepare("INSERT INTO Bids (Bid_Id, Price, Date, Item_Id, User_Id) 

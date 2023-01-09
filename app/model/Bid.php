@@ -1,5 +1,4 @@
 <?php
-
 class Bid{
     public int $bidId;
     public float $price;
@@ -7,5 +6,4 @@ class Bid{
     public Item $itemId;
     public User $userId;
 }
-
 ?>
