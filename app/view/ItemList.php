@@ -13,9 +13,7 @@
                     <div class="card mx-auto p-0 mt-5" style="height:420px; ">
                         <?php
                         $image =  $imageRepository->getSingleImageByItemId($row->Item_Id);
-                        foreach ($image as $imageRow) {
-                            $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($imageRow->Image);
-                        }
+                        $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($image[0]->Image);
                         ?>
                         <img src="<?php
                                     echo $dataUri;

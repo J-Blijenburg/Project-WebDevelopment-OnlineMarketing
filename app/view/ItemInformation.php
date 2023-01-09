@@ -9,6 +9,7 @@
     <meta name="theme-color" content="#712cf9">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
+
 <body class="bg-light">
     <div class="content ">
         <main class=" bg-white container mt-5 border">
@@ -35,7 +36,7 @@
                     </form>
                 <?php
                 }
-                ?>               
+                ?>
                 <?php
                 if ($_SESSION['editItem'] == true) {
                     foreach ($item as $row) {
@@ -93,70 +94,68 @@
                     <?php
                     }
                 } else {
-                    foreach ($item as $row) {
                     ?>
-                        <div id="carouselExample" class="carousel slide">
-                            <div class="carousel-inner">
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <?php
+                            $i = 0;
+                            foreach ($itemImages as $rowImages) {
+                                $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($rowImages->Image);
+                                if ($i == 0) {
+                            ?>
+                                    <div class="carousel-item active">
+                                        <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                    </div>
                                 <?php
-                                $i = 0;
-                                foreach ($itemImages as $rowImages) {
-                                    $dataUri = "data:image/jpg;charset=utf;base64," . base64_encode($rowImages->Image);
-                                    if ($i == 0) {
+                                    $i++;
+                                } else {
                                 ?>
-                                        <div class="carousel-item active">
-                                            <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
-                                        </div>
-                                    <?php
-                                        $i++;
-                                    } else {
-                                    ?>
-                                        <div class="carousel-item">
-                                            <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
-                                        </div>
-                                    <?php
-                                    }
-                                    ?>
+                                    <div class="carousel-item">
+                                        <img class="w-50 mx-auto d-block" width="500" height="500" src="<?php echo $dataUri; ?>" alt="Image of item">
+                                    </div>
                                 <?php
                                 }
                                 ?>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                            <?php
+                            }
+                            ?>
                         </div>
-                        <h1 class="mt-3"><?php echo $row->Name ?></h1>
-                        <h4>Minimum Price: € <?php
-                                                $priceFormat = number_format((float)$row->Price, 2, '.', '');
-                                                echo $priceFormat;
-                                                ?>,-</h4>
-                        <p class="lead"><?php echo $row->Description ?></p>
-                        <h5 class="pb-2"><span class="badge bg-info text-bg-warning"><?php echo $row->Features; ?></span></h5>
-                        <div class="userInfo">
-                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Seller info
-                            </button>
-                            <div class="collapse pb-2 w-50" id="collapseExample">
-                                <div class="card card-body">
-                                    <?php
-                                    foreach ($item as $row) {
-                                        echo "$row->FirstName $row->LastName ";
-                                        echo "<br> ------------ <br>";
-                                        echo "$row->Email";
-                                    }
-                                    ?>
-                                </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <h1 class="mt-3"><?php echo $item[0]->Name ?></h1>
+                    <h4>Minimum Price: € <?php
+                                            $priceFormat = number_format((float)$item[0]->Price, 2, '.', '');
+                                            echo $priceFormat;
+                                            ?>,-</h4>
+                    <p class="lead"><?php echo $item[0]->Description ?></p>
+                    <h5 class="pb-2"><span class="badge bg-info text-bg-warning"><?php echo $item[0]->Features; ?></span></h5>
+                    <div class="userInfo">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                            Seller info
+                        </button>
+                        <div class="collapse pb-2 w-50" id="collapseExample">
+                            <div class="card card-body">
+                                <?php
+                                echo $item[0]->FirstName;
+                                echo " ";
+                                echo $item[0]->LastName;
+                                echo "<br> ------------ <br>";
+                                echo $item[0]->Email;
+                                ?>
                             </div>
                         </div>
-                    <?php
-                    }
+                    </div>
+                <?php
                 }
                 if ($_SESSION["editItem"] == false) {
-                    ?>
+                ?>
                     <form method="POST">
                         <div class="input-group mt-4">
                             <span class="input-group-text">€</span>
@@ -226,4 +225,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SellItem.js"></script>
 </body>
+
 </html>
