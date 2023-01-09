@@ -63,7 +63,7 @@
         flex-direction: column;
         justify-content: center;
         width: 80%;
-        height: 75%;
+        height: 350px;
         gap: 20px;
     }
 
@@ -98,8 +98,8 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 80%;
-        height: 75%;
+        width: 60%;
+        height: 300px;
         gap: 20px;
     }
 
