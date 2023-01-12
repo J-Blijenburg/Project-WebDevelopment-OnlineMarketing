@@ -1,5 +1,5 @@
 <?php
-class Item{
+class Item implements \JsonSerializable{
     public int $itemId;
     public string $name;
     public string $description;
@@ -9,5 +9,10 @@ class Item{
     public User $user;
     public Category $category;
     public string $features;
+
+    public function jsonSerialize(): mixed
+    {
+        return get_object_vars($this);
+    }
 }
 ?>

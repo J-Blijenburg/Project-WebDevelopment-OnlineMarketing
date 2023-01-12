@@ -36,6 +36,11 @@ switch ($url) {
         $controller = new ItemInformationController();
         $controller->itemInformation();
         break;
+    case "/api/item":
+        require_once("../api/Controllers/ItemController.php");
+        $controller = new ItemController();
+        $controller->index();
+        break;
     default;
         http_response_code(404);
 }
