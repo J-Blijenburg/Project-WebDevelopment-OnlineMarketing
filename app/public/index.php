@@ -36,11 +36,6 @@ switch ($url) {
         $controller = new ItemInformationController();
         $controller->itemInformation();
         break;
-    case "/api/item":
-        require_once("../api/Controllers/ItemController.php");
-        $controller = new ItemController();
-        $controller->index();
-        break;
     case "/api/bid":
         require_once("../api/Controllers/BidController.php");
         $controller = new BidController();
