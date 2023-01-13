@@ -1,8 +1,8 @@
 <?php
+session_start();
 //The basecontroller will display the base of most pages
 require_once("../controller/BaseController.php");
 $url = $_SERVER["REQUEST_URI"];
-
 
 switch ($url) {
     case "/":
@@ -40,6 +40,11 @@ switch ($url) {
         require_once("../api/Controllers/ItemController.php");
         $controller = new ItemController();
         $controller->index();
+        break;
+    case "/api/bid":
+        require_once("../api/Controllers/BidController.php");
+        $controller = new BidController();
+        $controller->getBidByItemId($_SESSION['selectedItem']);
         break;
     default;
         http_response_code(404);

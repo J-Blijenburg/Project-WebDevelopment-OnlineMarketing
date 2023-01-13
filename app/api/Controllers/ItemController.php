@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . '/../../services/ItemService.php';
 
 class ItemController{
     private $itemService; 

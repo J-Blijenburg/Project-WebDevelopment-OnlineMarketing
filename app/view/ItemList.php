@@ -6,8 +6,8 @@
     <!-- https://stackoverflow.com/questions/71210541/how-do-i-implement-search-function-on-bootstrap-cards -->
     <div class="album  bg-light pb-5">
         <div class="container">
-            <div class="row">
-                <?php
+            <div id="row" class="row">
+            <?php
                 foreach ($items as $row) {
                 ?>
                     <div class="card mx-auto p-0 mt-5" style="height:420px; ">
@@ -44,6 +44,13 @@
             </div>
         </div>
     </div>
+    
+
 </body>
 
+
+
+
 </html>
+
+

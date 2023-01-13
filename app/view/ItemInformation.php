@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
-<body class="bg-light">
+<body onload="javascript:getAllBid()" class="bg-light">
     <div class="content ">
         <main class=" bg-white container mt-5 border">
             <div class="bg-white pt-4 pb-4 rounded">
@@ -194,7 +194,7 @@
                         <?php
                         foreach ($itemBiddings as $row) {
                         ?>
-                            <tr id="test">
+                            <tr id="tableRow">
                                 <th scope="row"></th>
                                 <td><?php echo $row->FirstName ?></td>
                                 <td id="price"><?php
@@ -218,12 +218,57 @@
                         ?>
                     </tbody>
                 </table>
+            
             </div>
         </main>
     </div>
-    <script src="javascript/BidItem.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SellItem.js"></script>
+
+   
 </body>
 
+<script>
+    
+
+function getAllBid() {
+   
+    fetch("http://localhost/api/bid")
+        .then(res => res.json())
+        .then((bids) => {
+            console.log('output:', bids);
+            bids.forEach(bid => {
+                //create a card for all the information
+                const bodytable = document.getElementById("bidBodyId");
+
+                //create a table row
+                const tableRow = document.createElement("tr");
+
+                //set the first collumn
+                const firstCol = document.createElement("td");
+
+                //set the name of the bid in the created row
+                const name = document.createElement("td");
+                name.innerHTML = bid.FirstName;
+
+                //set the price of the bid in the created row
+                const price = document.createElement("td");
+                price.innerHTML = bid.Price;
+
+                const date = document.createElement("td");
+                date.innerHTML = bid.Date;
+
+
+                tableRow.appendChild(firstCol);
+                tableRow.appendChild(name);
+                tableRow.appendChild(price);
+                tableRow.appendChild(date);
+                bodytable.appendChild(tableRow);
+            });
+
+        }).catch(err => console.error(err));
+}
+
+</script>
 </html>
+

@@ -3,7 +3,7 @@ require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
 require_once("../repositories/CategoryRepository.php");
 require_once("../repositories/ImageRepository.php");
-session_start();
+
 class MainController
 {
     public function main()
@@ -31,6 +31,12 @@ class MainController
             $_SESSION['selectedItem'] = htmlspecialchars($_POST["btnMoreInfo"]);
             header("Location: /iteminformation");
         }
+
+       
+
+        
+      
+
 
         //The html page consist of multiple view. This is done to prevent duplicated code.
         $baseController =  new BaseController();

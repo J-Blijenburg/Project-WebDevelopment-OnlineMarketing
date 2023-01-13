@@ -1,4 +1,8 @@
 <?php
+
+require __DIR__ . '/../services/ItemService.php';
+require __DIR__ . '/../services/BidService.php';
+
 class BaseController
 {
     public function header()
@@ -52,10 +56,13 @@ class BaseController
         //depends which items will display. This is done by looking at the controller.
         if ($_SESSION['controller'] == "Profile") {
             $items = $repository->getUserItems($user->user_Id);
-          
         } else {
             $items = $repository->getAll();
         }
+
+
+
+
 
         require("../view/ItemList.php");
     }

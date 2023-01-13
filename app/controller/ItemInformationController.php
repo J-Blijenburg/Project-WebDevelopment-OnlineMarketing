@@ -3,7 +3,7 @@ require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
 require_once("../repositories/BidRepository.php");
 require_once("../repositories/ImageRepository.php");
-session_start();
+require_once("../api/Controllers/BidController.php");
 
 class ItemInformationController
 {
@@ -27,7 +27,7 @@ class ItemInformationController
         $itemId = $_SESSION['selectedItem'];
 
         $item = $itemRepository->getItemById($itemId);
-        $itemBiddings = $bidRepository->getBiddingById($itemId);
+        $itemBiddings = $bidRepository->getBidByItemId($itemId);
         $itemImages = $imageRepository->getAllImageByItemId($itemId);
 
         
@@ -69,8 +69,14 @@ class ItemInformationController
         }
        
 
+
+       
+      
         $baseController =  new BaseController();
+
         $baseController->header();
+
+
         require("../view/ItemInformation.php");
         $baseController->footer();
     }
