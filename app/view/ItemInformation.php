@@ -191,84 +191,91 @@
                         </tr>
                     </thead>
                     <tbody id=bidBodyId>
-                        <?php
-                        foreach ($itemBiddings as $row) {
-                        ?>
-                            <tr id="tableRow">
-                                <th scope="row"></th>
-                                <td><?php echo $row->FirstName ?></td>
-                                <td id="price"><?php
-                                                $priceFormat = number_format((float)$row->Price, 2, '.', '');
-                                                echo "€ $priceFormat,-"
-                                                ?>
-                                </td>
-                                <!-- https://stackoverflow.com/questions/136782/convert-from-mysql-datetime-to-another-format-with-php -->
-                                <td><?php
-                                    $time = strtotime($row->Date);
-                                    $datetimeFormat = date("j M o - H:i", $time);
-                                    echo $datetimeFormat ?></td>
-                                <?php if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) { ?>
-                                    <form id="sellButtonId" method="POST">
-                                        <td><button onclick="itemSold()" name="btnSellItem" value="<?php echo $row->Item_Id; ?>" style="width:100%">Sell</button></td>
-                                    </form>
-                                <?php } ?>
-                            </tr>
-                        <?php
-                        }
-                        ?>
+                       
                     </tbody>
                 </table>
-            
+
             </div>
         </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="javascript/SellItem.js"></script>
 
-   
+
 </body>
 
 <script>
-    
+    function getAllBid() {
 
-function getAllBid() {
-   
-    fetch("http://localhost/api/bid")
-        .then(res => res.json())
-        .then((bids) => {
-            console.log('output:', bids);
-            bids.forEach(bid => {
-                //create a card for all the information
-                const bodytable = document.getElementById("bidBodyId");
+        fetch("http://localhost/api/bid")
+            .then(res => res.json())
+            .then((bids) => {
+                console.log('output:', bids);
+                bids.forEach(bid => {
 
-                //create a table row
-                const tableRow = document.createElement("tr");
+                    //create a card for all the information
+                    const bodytable = document.getElementById("bidBodyId");
 
-                //set the first collumn
-                const firstCol = document.createElement("td");
+                    //create a table row
+                    const tableRow = document.createElement("tr");
 
-                //set the name of the bid in the created row
-                const name = document.createElement("td");
-                name.innerHTML = bid.FirstName;
-
-                //set the price of the bid in the created row
-                const price = document.createElement("td");
-                price.innerHTML = bid.Price;
-
-                const date = document.createElement("td");
-                date.innerHTML = bid.Date;
+                    //set the first collumn
+                    const firstCol = document.createElement("td");
 
 
-                tableRow.appendChild(firstCol);
-                tableRow.appendChild(name);
-                tableRow.appendChild(price);
-                tableRow.appendChild(date);
-                bodytable.appendChild(tableRow);
-            });
+                    //set the name of the bid in the created row
+                    const name = document.createElement("td");
+                    name.innerHTML = bid.FirstName;
 
-        }).catch(err => console.error(err));
-}
+                    //set the price of the bid in the created row
+                    const price = document.createElement("td");
+                    $number = bid.Price;
 
+                    price.innerHTML = "€ " + new Intl.NumberFormat('en-US', {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                    }).format($number) + ",-";
+
+                    //set the date of the bid
+                    const date = document.createElement("td");
+
+
+                    const dateformatter = new Date(bid.Date);
+                    const year = dateformatter.getFullYear();
+                    const month = months[dateformatter.getMonth()];
+                    const day = dateformatter.getDate();
+                    const hour = dateformatter.getHours();
+                    const minutes = dateformatter.getMinutes();
+
+
+                    date.innerHTML = day + ' ' + month + ' ' + year + ' - ' + hour + ':' + minutes;
+                    
+                    tableRow.appendChild(firstCol);
+                    tableRow.appendChild(name);
+                    tableRow.appendChild(price);
+                    tableRow.appendChild(date);
+                    bodytable.appendChild(tableRow);
+                });
+
+            }).catch(err => console.error(err));
+    }
 </script>
-</html>
 
+<script>
+    const months = {
+        0: 'January',
+        1: 'February',
+        2: 'March',
+        3: 'April',
+        4: 'May',
+        5: 'June',
+        6: 'July',
+        7: 'August',
+        8: 'September',
+        9: 'October',
+        10: 'November',
+        11: 'December'
+    }
+</script>
+
+</html>

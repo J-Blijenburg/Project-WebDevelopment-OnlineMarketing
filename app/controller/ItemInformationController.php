@@ -40,7 +40,6 @@ class ItemInformationController
             } else {
                 $_SESSION['validInput'] = true;
             }
-            header("Location: /iteminformation");
         }
         //when clicked the user will remove the item
         else if (isset($_POST["btnDeleteItem"])) {
