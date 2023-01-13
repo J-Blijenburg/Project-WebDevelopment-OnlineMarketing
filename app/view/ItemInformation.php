@@ -17,7 +17,9 @@
                 <?php
                 if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) {
                 ?>
-                    <form method="POST" class="d-flex justify-content-end pb-3">
+                    <form method="POST" class="d-flex justify-content-between pb-3">
+
+                    <button onclick="itemSold()" class="btn btn-success" name="btnSellItem" value="<?php echo $_SESSION['selectedItem'] ?>" style="width:20%">Sell Item</button>
                         <div class="btn-group">
                             <button name="btnEditItem" class="btn btn-outline-secondary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -34,6 +36,10 @@
                             </button>
                         </div>
                     </form>
+
+                 
+
+
                 <?php
                 }
                 ?>
@@ -185,13 +191,11 @@
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
                             <th scope="col">Date&Time</th>
-                            <?php if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) { ?>
-                                <th scope="col">Sell Item</th>
-                            <?php } ?>
+
                         </tr>
                     </thead>
                     <tbody id=bidBodyId>
-                       
+                        <!-- with javascript API end point all the bids will be imported -->
                     </tbody>
                 </table>
 
@@ -249,7 +253,7 @@
 
 
                     date.innerHTML = day + ' ' + month + ' ' + year + ' - ' + hour + ':' + minutes;
-                    
+
                     tableRow.appendChild(firstCol);
                     tableRow.appendChild(name);
                     tableRow.appendChild(price);

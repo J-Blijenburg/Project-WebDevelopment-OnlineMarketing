@@ -1,6 +1,4 @@
 <?php
-
-require __DIR__ . '/../services/ItemService.php';
 require __DIR__ . '/../services/BidService.php';
 
 class BaseController

@@ -1,3 +1,7 @@
+body{
+   background-color: red;
+}
+
 /* Size for mobile version */
 @media (max-width:480px) {
    .header {

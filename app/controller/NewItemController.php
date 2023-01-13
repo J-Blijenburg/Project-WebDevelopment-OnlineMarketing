@@ -3,7 +3,6 @@ require_once("../repositories/UserRepository.php");
 require_once("../repositories/ItemRepository.php");
 require_once("../repositories/CategoryRepository.php");
 require_once("../repositories/ImageRepository.php");
-session_start();
 
 class NewItemController
 {
@@ -22,7 +21,7 @@ class NewItemController
 
         //When the button Create item is clicked. It will check if the user has filled in certain values
         if (isset($_POST["ItemCreate"])) {
-            if (!(empty($_POST["ItemName"]) && empty($_POST["ItemDescription"]) && empty($_POST["ItemPrice"])  && empty($_POST["ItemFeatures"]))) {
+            if (!(empty($_POST["ItemName"]) || empty($_POST["ItemDescription"]) || empty($_POST["ItemPrice"])  || empty($_POST["ItemFeatures"]))) {
 
                 //the current user who is logged in
                 $user = unserialize($_SESSION['user']);
