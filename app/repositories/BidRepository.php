@@ -18,7 +18,7 @@ class BidRepository extends Repository
         FROM Bids AS BI JOIN Users AS US ON BI.User_Id = US.User_Id WHERE Item_Id = :itemId ORDER BY BI.Price DESC");
         $stmt->bindParam(':itemId', $itemId);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Item');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Bid');
         $item = $stmt->fetchAll();
         return $item;
     }

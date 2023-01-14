@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
-<body onload="javascript:getAllBid()" class="bg-light">
+<body class="bg-light" onload="javascript:getAllBid()">
     <div class="content ">
         <main class=" bg-white container mt-5 border">
             <div class="bg-white pt-4 pb-4 rounded">
@@ -210,7 +210,6 @@
 
 <script>
     function getAllBid() {
-
         fetch("http://localhost/api/bid")
             .then(res => res.json())
             .then((bids) => {
