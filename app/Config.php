@@ -1,6 +1,6 @@
 <?php
-$db_host = "mysql";
-$db_username = "root";
-$db_password = "secret123";
-$db_name = "onlineMarketing";
+$db_host = "localhost";
+$db_username = "id20157273_onlinemarketingjens";
+$db_password = "mo8l$2%R86b/m?k!";
+$db_name = "id20157273_onlinemarketing";
 ?>

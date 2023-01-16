@@ -11,17 +11,17 @@ class BidController{
     // router maps this to /article and /article/index automatically
     public function getAll(){
         if($_SERVER["REQUEST_METHOD"] === "GET"){
-            $test = $this->bidService->getAll();
+            $bids = $this->bidService->getAll();
             header('Content-Type: application/json; charset=utf-8');
-            echo json_encode($test);
+            echo json_encode($bids);
         }
     }
 
     public function getBidByItemId($itemId){
         if($_SERVER["REQUEST_METHOD"] === "GET"){
-            $test = $this->bidService->getBidByItemId($itemId);
+            $bids = $this->bidService->getBidByItemId($itemId);
             header('Content-Type: application/json; charset=utf-8');
-            echo json_encode($test);
+            echo json_encode($bids);
         }
     }
    

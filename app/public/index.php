@@ -39,7 +39,7 @@ switch ($url) {
     case "/api/bid":
         require_once("../api/Controllers/BidController.php");
         $controller = new BidController();
-        $controller->getBidByItemId(82);
+        $controller->getBidByItemId($_SESSION['selectedItem']);
         break;
     default;
         http_response_code(404);
