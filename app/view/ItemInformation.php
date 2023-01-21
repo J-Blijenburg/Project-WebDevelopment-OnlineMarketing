@@ -18,7 +18,7 @@
                 if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) {
                 ?>
                     <form method="POST" class="d-flex justify-content-between pb-3">
-                    <button onclick="itemSold()" class="btn btn-success" name="btnSellItem" value="<?php echo $_SESSION['selectedItem'] ?>" style="width:20%">Sell Item</button>
+                    <button onclick="sellItemAlertMessage()" class="btn btn-success" name="btnSellItem" value="<?php echo $_SESSION['selectedItem'] ?>" style="width:20%">Sell Item</button>
                         <div class="btn-group">
                             <button name="btnEditItem" class="btn btn-outline-secondary">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -208,8 +208,12 @@
 </body>
 
 <script>
+function sellItemAlertMessage(){
+    window.alert("Congratulations! The item has been sold! \n The item will now be removed from ur profile");
+
+}
     function getAllBid() {
-        fetch("https://onlinemarketingcreatedbyjens.000webhostapp.com/api/bid")
+        fetch("http://localhost/api/bid")
             .then(res => res.json())
             .then((bids) => {
                 console.log('output:', bids);
