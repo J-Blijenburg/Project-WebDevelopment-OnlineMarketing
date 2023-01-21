@@ -57,7 +57,7 @@ $user = unserialize($_SESSION['user']);
                     <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>
                 </div>
                 <div>
-                    <a> *requires a minimum of 2 images  </a>
+                    <a> *requires a minimum of 2 images </a>
                 </div>
                 <!-- This div is part of the Drag and Drop API -->
                 <div class="input-group mb-3" style="display: flex">
@@ -84,8 +84,48 @@ $user = unserialize($_SESSION['user']);
             </form>
         </div>
     </main>
-    <script src="javascript/DragDropAPI.js"></script>
+    <!-- <script src="../javascript/DragDropAPI.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+    <script>
+        // <!-- https://www.youtube.com/watch?v=OHTudicK7nY -->
+        //Use a Div to create an draggable element
+        const dragImage = document.querySelector("#dragImage");
+
+        //The item which is dragged will be transformed into an text file
+        dragImage.addEventListener("dragstart", e => {
+            e.dataTransfer.setData("text/plain", dragImage.id);
+        });
+
+        //When an imaged is dragged into the zone the opacity will decrease a little bit
+        for (const droppedImage of document.querySelectorAll(".drop-zone")) {
+            droppedImage.addEventListener("dragover", e => {
+                e.preventDefault();
+                droppedImage.classList.add("drop-zone--over");
+            });
+
+            //if the dragged image is removed from the zone the opacity will return to its original state
+            droppedImage.addEventListener("dragleave", e => {
+                droppedImage.classList.remove("drop-zone--over");
+            })
+        }
+
+        //this event listener will make sure that the dragged image can be dropped into an input field
+        //it will get the input value id from the html page and place the text data into an element
+        //this text data can later be picked up as an file
+        droppedImage.addEventListener("drop", e => {
+            e.preventDefault();
+
+            document.getElementById("myFileInput").files = e.dataTransfer.files;
+
+            const droppedElementId = e.dataTransfer.getData("text/plain");
+            const droppedElement = document.getElementById(droppedElementId);
+
+            droppedImage.appendChild(droppedElement);
+            droppedImage.classList.remove("drop-zone--over");
+        });
+    </script>
+
 </body>
 
 </html>
