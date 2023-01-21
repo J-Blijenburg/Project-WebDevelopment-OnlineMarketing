@@ -1,0 +1,16 @@
+.drop-zone{
+    width: 100px;
+    height: 100px;
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px dashed black;
+}
+
+.drop-zone--over{opacity: 0.5}
+
+.invalidInput{
+    color: red;
+    font-size: 75%;
+}

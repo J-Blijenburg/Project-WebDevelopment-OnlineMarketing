@@ -33,4 +33,3 @@ droppedImage.addEventListener("drop", e => {
     droppedImage.appendChild(droppedElement);
     droppedImage.classList.remove("drop-zone--over");
  });
-

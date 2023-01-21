@@ -17,7 +17,18 @@
         <div class=mainComponents>
             <div class="headerInfo" style="width: 100%">
                 <form class="mainSearchItems" method="POST">
-                    <h1 class="mainHeaderText">Online-Marketing</h1>
+                    <?php
+                    if ($_SESSION['controller'] == "Profile") {
+                    ?>
+                        <h1 class="mainHeaderText"><?php echo "$user->firstName's advertisements" ?> </h1>
+                    <?php
+                    } else {
+                    ?>
+                        <h1 class="mainHeaderText">Online-Marketing</h1>
+                    <?php
+                    }
+                    ?>
+
                     <div class="input-group">
                         <input class="form-control form-control-dark w-50" id="myInput" type="search" placeholder="Search" aria-label="Search" oninput="searchThroughItemsTextfield()">
                         <select oninput="searchThroughItemsCategory()" class="form-select" name="inputCategory" id="inputCategory">

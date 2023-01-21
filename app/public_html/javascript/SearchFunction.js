@@ -6,10 +6,18 @@ function searchThroughItemsCategory() {
   var cards = document.getElementsByClassName("card")
   var titles = document.getElementsByClassName("card-category");
 
-  FilterCards(filter, cards, titles);
+  for (i = 0; i <= cards.length; i++) {
+    a = titles[i];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      cards[i].style.display = "";
+    } else {
+      cards[i].style.display = "none";
+    }
+  }
 }
 
 //The first one is for the category search and the second one is for the searchbar
+//Since this was the best way to show the search function i had to use 2 methods
 
 function searchThroughItemsTextfield() {
   var input = document.getElementById("myInput");
@@ -17,10 +25,6 @@ function searchThroughItemsTextfield() {
   var cards = document.getElementsByClassName("card")
   var titles = document.getElementsByClassName("card-title");
 
-  FilterCards(filter, cards, titles);
-}
-
-function FilterCards(filter, cards, titles){
   for (i = 0; i <= cards.length; i++) {
     a = titles[i];
     if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {

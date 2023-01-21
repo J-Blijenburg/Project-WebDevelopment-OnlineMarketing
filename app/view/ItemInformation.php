@@ -210,7 +210,7 @@
 
 <script>
     function getAllBid() {
-        fetch("http://localhost/api/bid")
+        fetch("https://onlinemarketingcreatedbyjens.000webhostapp.com/api/bid")
             .then(res => res.json())
             .then((bids) => {
                 console.log('output:', bids);
@@ -234,10 +234,10 @@
                     const price = document.createElement("td");
                     $number = bid.Price;
 
-                    price.innerHTML = "€ " + new Intl.NumberFormat('en-US', {
+                    price.innerHTML = "€ " + new Intl.NumberFormat('es-ES', {
                         minimumFractionDigits: 2,
                         maximumFractionDigits: 2,
-                    }).format($number) + ",-";
+                    }).format($number);
 
                     //set the date of the bid
                     const date = document.createElement("td");

@@ -56,6 +56,9 @@ $user = unserialize($_SESSION['user']);
                     <span class="input-group-text">Features</span>
                     <textarea name="ItemFeatures" class="form-control" aria-label="With textarea"></textarea>
                 </div>
+                <div>
+                    <a> *requires a minimum of 2 images  </a>
+                </div>
                 <!-- This div is part of the Drag and Drop API -->
                 <div class="input-group mb-3" style="display: flex">
                     <label class="input-group-text" for="ItemUpload">Upload</label>

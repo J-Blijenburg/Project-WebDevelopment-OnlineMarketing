@@ -8,6 +8,7 @@ class MainController
 {
     public function main()
     {
+       
         //set the needed session value to false. This only apply's the first time the application starts
         if (!isset($_SESSION['loggedin'])) {
             $_SESSION['loggedin'] = false;
