@@ -18,7 +18,6 @@
                 if ($_SESSION['loggedin'] == true && ($item[0]->User_Id == $user->user_Id)) {
                 ?>
                     <form method="POST" class="d-flex justify-content-between pb-3">
-
                     <button onclick="itemSold()" class="btn btn-success" name="btnSellItem" value="<?php echo $_SESSION['selectedItem'] ?>" style="width:20%">Sell Item</button>
                         <div class="btn-group">
                             <button name="btnEditItem" class="btn btn-outline-secondary">
