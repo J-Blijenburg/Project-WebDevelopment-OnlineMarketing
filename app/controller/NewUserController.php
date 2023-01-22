@@ -12,7 +12,6 @@ class NewUserController
         //get the needed repository to load the page
         $repository = new UserRepository();
 
-        
         //When button is clicked the user will go back to the previous page
         if(isset($_POST["BackBtn"])){
             header("Location: /login");

@@ -16,7 +16,6 @@ class ProfileController
             $user = unserialize($_SESSION['user']);
         }
 
-
         //The html page consist of multiple view. This is done to prevent duplicated code.
         $baseController =  new BaseController();
         $baseController->header();

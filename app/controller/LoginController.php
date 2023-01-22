@@ -4,13 +4,11 @@ require_once("../repositories/UserRepository.php");
 
 class LoginController{
    
-
     public function login(){
         $repository = new UserRepository();
         //This session is to display an error if the user has logged in uncorrectly
         $_SESSION['wrongLogin'] = false;
         
-    
         if (isset($_POST["email"]) && isset($_POST["password"])) {
             $email = htmlspecialchars($_POST["email"]);
             $password = htmlspecialchars($_POST["password"]);

@@ -20,27 +20,27 @@ class NewItemController
 
         //get every category there is from the database
         $allCategorys = $categoryRepository->getAllCategory();
-
+        
         //When the button Create item is clicked. It will check if the user has filled in certain values
         if (isset($_POST["ItemCreate"])) {
-            if (!(empty($_POST["ItemName"]) || empty($_POST["ItemDescription"]) || empty($_POST["ItemPrice"])  || empty($_POST["ItemFeatures"]))) {
-                if (count($_FILES['ItemUpload']['tmp_name']) >= $minimumImages ) {
-                    //the current user who is logged in
-                    $user = unserialize($_SESSION['user']);
+            if (!(empty($_POST["ItemName"]) || empty($_POST["ItemDescription"]) ||  empty($_POST["ItemPrice"]) ||  empty($_POST["ItemFeatures"]))) {
+                //the current user who is logged in
+                $user = unserialize($_SESSION['user']);
 
-                    //retreive the given input by the use of POST
-                    $itemName = htmlspecialchars($_POST["ItemName"]);
-                    $itemDescription = htmlspecialchars($_POST["ItemDescription"]);
-                    $itemPrice = htmlspecialchars($_POST["ItemPrice"]);
-                    $itemPrice = str_replace(",",".",$itemPrice);
-                    $selectedCategory = htmlspecialchars($_POST["inputCategory"]);
-                    $itemFeatures = htmlspecialchars($_POST["ItemFeatures"]);
+                //retreive the given input by the use of POST
+                $itemName = htmlspecialchars($_POST["ItemName"]);
+                $itemDescription = htmlspecialchars($_POST["ItemDescription"]);
+                $itemPrice = htmlspecialchars($_POST["ItemPrice"]);
+                $itemPrice = str_replace(",", ".", $itemPrice);
+                $selectedCategory = htmlspecialchars($_POST["inputCategory"]);
+                $itemFeatures = htmlspecialchars($_POST["ItemFeatures"]);
+
+                //make sure that the given input is valid
+                if (count($_FILES['ItemUpload']['tmp_name']) >= $minimumImages && is_numeric($itemPrice) || is_float($itemPrice)) {
                     //send all the information to the repository
                     $createdNewItem = $repository->getAndSetNewItem($itemName, $itemDescription, $itemPrice, $selectedCategory, $user->user_Id, $itemFeatures);
 
                     //look for the file path and the get all the information of that file. Count the amount of files
-
-
                     $fileCount = count($_FILES['ItemUpload']['tmp_name']);
 
                     //loop through every single file and upload the image to the database 

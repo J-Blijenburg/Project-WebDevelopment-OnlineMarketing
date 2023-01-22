@@ -5,7 +5,5 @@ class Bid {
     public string $date;
     public Item $itemId;
     public User $userId;
-
-    
 }
 ?>

@@ -1,9 +1,11 @@
 <?php
-class SwitchRouter{
-    public function route($url){
+class SwitchRouter
+{
+    public function route($url)
+    {
         session_start();
         //The basecontroller will display the base of most pages
-        require_once("../controller/BaseController.php");        
+        require_once("../controller/BaseController.php");
         switch ($url) {
             case "/":
             case "/main":
@@ -22,15 +24,18 @@ class SwitchRouter{
                 $controller->newUser();
                 break;
             case "/profile":
+                $this->checkLogin();
                 require_once("../controller/ProfileController.php");
                 $controller = new ProfileController();
                 $controller->profile();
                 break;
             case "/newitem":
+                $this->checkLogin();
                 require_once("../controller/NewItemController.php");
                 $controller = new NewItemController();
                 $controller->newItem();
                 break;
+
             case "/iteminformation":
                 require_once("../controller/ItemInformationController.php");
                 $controller = new ItemInformationController();
@@ -44,7 +49,13 @@ class SwitchRouter{
             default;
                 http_response_code(404);
         }
-    }
-    
-}
 
+    }
+
+    //if the user wants to go to a page without being logged in, it will change the url to the login page
+    public function checkLogin(){
+        if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] == false) {
+            header("Location: /login");
+        }
+    }
+}

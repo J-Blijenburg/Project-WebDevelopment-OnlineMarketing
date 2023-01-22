@@ -33,12 +33,6 @@ class MainController
             header("Location: /iteminformation");
         }
 
-       
-
-        
-      
-
-
         //The html page consist of multiple view. This is done to prevent duplicated code.
         $baseController =  new BaseController();
         $baseController->header();

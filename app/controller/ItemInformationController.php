@@ -13,7 +13,7 @@ class ItemInformationController
         //When opening the information page always make sure it doesnt start in 'edit mode'
         $_SESSION['editItem'] = false;
         $_SESSION['validInput'] = false;
-        
+
         //the current user who is logged in
         if (isset($_SESSION['user'])) {
             $user = unserialize($_SESSION['user']);
@@ -22,7 +22,7 @@ class ItemInformationController
         $itemRepository = new ItemRepository();
         $bidRepository = new BidRepository();
         $imageRepository = new ImageRepository();
-        
+
         //When going from the itemlist page this session will receive the selected item ID.
         $itemId = $_SESSION['selectedItem'];
 
@@ -30,11 +30,11 @@ class ItemInformationController
         $itemBiddings = $bidRepository->getBidByItemId($itemId);
         $itemImages = $imageRepository->getAllImageByItemId($itemId);
 
-        
         //button to place a bid on the item
         if (isset($_POST["txtBidPrice"])) {
             $bidPrice = htmlspecialchars($_POST["txtBidPrice"]);
-            if (is_numeric($bidPrice)) {
+            $bidPrice = str_replace(",", ".", $bidPrice);
+            if ($this->checkValidPrice($bidPrice)) {
                 $bidRepository->setNewBid($bidPrice, $itemId, $user->user_Id);
                 $_SESSION['validInput'] = false;
             } else {
@@ -49,15 +49,23 @@ class ItemInformationController
         //when clicked go to the edit version
         else if (isset($_POST["btnEditItem"])) {
             $_SESSION['editItem'] = true;
+            $_SESSION['editItemValidInput'] = false;
         }
         //Button to change the values of the item
         else if (isset($_POST["btnSaveItem"])) {
             $itemName = htmlspecialchars($_POST["itemName"]);
             $itemPrice = htmlspecialchars($_POST["itemPrice"]);
+            $itemPrice = str_replace(",", ".", $itemPrice);
             $itemDescription = htmlspecialchars($_POST["itemDescription"]);
-
-            $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
-            header("Location: /iteminformation");
+           
+            if ($this->checkValidPrice($itemPrice)) {
+                $itemRepository->EditItemById($itemId, $itemName, $itemDescription, $itemPrice);
+                $_SESSION['editItemValidInput'] = false;
+                header("Location: /iteminformation");
+            } else {
+                $_SESSION['editItemValidInput'] = true;
+                $_SESSION['editItem'] = true;
+            }
         }
         //When clicked the user will 'sell' the item to the other user
         else if (isset($_POST["btnSellItem"])) {
@@ -66,17 +74,19 @@ class ItemInformationController
 
             header("Location: /profile");
         }
-       
 
-
-       
-      
         $baseController =  new BaseController();
-
         $baseController->header();
-
-
         require("../view/ItemInformation.php");
         $baseController->footer();
+    }
+
+    public function checkValidPrice($price){
+        if(is_numeric($price) || is_float($price)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

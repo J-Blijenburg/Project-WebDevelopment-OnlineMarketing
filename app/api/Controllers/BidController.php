@@ -8,7 +8,7 @@ class BidController{
         $this->bidService = new BidService();
     }
 
-    // router maps this to /article and /article/index automatically
+    //get all the bids there is
     public function getAll(){
         if($_SERVER["REQUEST_METHOD"] === "GET"){
             $bids = $this->bidService->getAll();
@@ -17,6 +17,7 @@ class BidController{
         }
     }
 
+    //get all the bids from a specific item
     public function getBidByItemId($itemId){
         if($_SERVER["REQUEST_METHOD"] === "GET"){
             $bids = $this->bidService->getBidByItemId($itemId);
